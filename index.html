@@ -536,8 +536,70 @@ gap: 1.5rem;
             opacity: 1;
             transform: none;
         }
+#backToTop {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 1.5rem;
+    z-index: 1000;
+    font-size: 1.4rem;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.6em 0.9em;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+#backToTop:hover {
+    background-color: #225ea8;
+    transform: scale(1.1);
+}
+/* Hamburger styles */
+.hamburger {
+  display: none;
+  font-size: 1.7rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+  }
+  .hamburger {
+    display: block;
+    color: var(--text);
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .nav-links li {
+    margin: 0.5rem 0;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+}
     </style>
 <script>
+    // Show "Back to Top" button on scroll
+const backToTopBtn = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+});
+backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
     document.addEventListener('DOMContentLoaded', function () {
         // Smooth fade-in effect for visible sections
         const observer = new IntersectionObserver(
@@ -587,22 +649,28 @@ gap: 1.5rem;
             });
         }
     });
+// Hamburger menu toggle
+document.getElementById("hamburger").addEventListener("click", function () {
+  document.getElementById("navLinks").classList.toggle("show");
+});
     </script>
 </head>
+<button id="backToTop" title="Go to top">↑</button>
 <body>
     <!-- Navbar -->
     <nav>
-        <div class="brand">Mikhail Tabong</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <div class="brand">Mikhail Tabong</div>
+  <button class="hamburger" id="hamburger">&#9776;</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
     <!-- Hero / Home -->
     <section class="hero fade-in" id="home">
         <!-- Use a portrait (rectangular) photo! -->
