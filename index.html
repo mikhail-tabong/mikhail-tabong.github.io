@@ -559,9 +559,10 @@ gap: 1.5rem;
 /* Hamburger styles */
 .hamburger {
   display: none;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   background: none;
   border: none;
+  color: var(--text);
   cursor: pointer;
 }
 
@@ -571,19 +572,21 @@ gap: 1.5rem;
   }
   .hamburger {
     display: block;
-    color: var(--text);
   }
   .nav-links {
     display: none;
     flex-direction: column;
     width: 100%;
-    margin-top: 0.5rem;
-  }
-  .nav-links li {
-    margin: 0.5rem 0;
+    background-color: var(--white);
+    margin-top: 0.7rem;
+    padding-bottom: 1rem;
   }
   .nav-links.show {
     display: flex;
+  }
+  .nav-links li {
+    padding: 0.5rem 0;
+    text-align: left;
   }
 }
     </style>
@@ -649,8 +652,8 @@ backToTopBtn.addEventListener("click", () => {
             });
         }
     });
-// Hamburger menu toggle
-document.getElementById("hamburger").addEventListener("click", function () {
+// Hamburger toggle
+document.getElementById("hamburger").addEventListener("click", () => {
   document.getElementById("navLinks").classList.toggle("show");
 });
     </script>
@@ -659,8 +662,9 @@ document.getElementById("hamburger").addEventListener("click", function () {
 <body>
     <!-- Navbar -->
     <nav>
+ <nav>
   <div class="brand">Mikhail Tabong</div>
-  <button class="hamburger" id="hamburger">&#9776;</button>
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation">&#9776;</button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
