@@ -1003,14 +1003,23 @@ document.getElementById("hamburger").addEventListener("click", () => {
         });
       });
 
-      // Hamburger toggle
-      const hamburger = document.getElementById("hamburger");
-      const navLinks = document.getElementById("navLinks");
-      if (hamburger && navLinks) {
-        hamburger.addEventListener("click", () => {
-          navLinks.classList.toggle("show");
-        });
+        // Hamburger toggle
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  }
+
+  // NEW: Close menu on nav link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (navLinks.classList.contains('show')) {
+        navLinks.classList.remove('show');
       }
+    });
+  });
 
       // Back to top button
       const backToTopBtn = document.getElementById("backToTop");
