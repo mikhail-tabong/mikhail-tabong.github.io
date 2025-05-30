@@ -11,12 +11,12 @@
   />
   <style>
     :root {
-      --accent: #2b6cb0; /* Soft blue accent */
-      --bg: #f9f9fb;
-      --white: #fff;
-      --text: #222;
-      --light-text: #5a5a5a;
-      --card-shadow: 0 2px 16px 0 rgba(34, 42, 66, 0.08);
+      --accent: #008080; /* Teal */
+      --bg: #f5f7f9; /* Very light gray */
+      --white: #ffffff;
+      --text: #2e2e2e; /* Dark charcoal */
+      --light-text: #6e7a85; /* Soft gray-blue */
+      --card-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
       --radius: 18px;
     }
     html,
@@ -44,7 +44,7 @@
     nav .brand {
       font-size: 1.4rem;
       font-weight: bold;
-      color: var(--text); /* BLACK name */
+      color: var(--text);
       letter-spacing: 1px;
     }
     nav ul {
@@ -67,7 +67,6 @@
     }
 
     /* Hero/Home */
-    /* Adjusted hero to flex for image + text alignment */
     .hero {
       display: flex;
       flex-wrap: wrap;
@@ -79,12 +78,12 @@
       padding: 3rem 1rem 2rem 1rem;
       background: var(--bg);
     }
-    /* Increased portrait size and circular shape */
+    /* Restored original portrait style */
     .hero .portrait {
-      max-width: 180px;
-      width: 100%;
+      width: 350px;
       height: auto;
-      border-radius: 50%;
+      object-fit: cover;
+      border-radius: 16px;
       box-shadow: var(--card-shadow);
       margin-bottom: 1.2rem;
       border: 5px solid var(--text);
@@ -139,7 +138,7 @@
     }
     .hero .cta-buttons a:hover,
     .hero .cta-buttons a:focus {
-      background: #225ea8;
+      background: #006666;
       color: var(--white);
       transform: translateY(-2px) scale(1.03);
       outline: none;
@@ -189,7 +188,6 @@
       font-style: italic;
       color: inherit;
     }
-    /* Quick Facts sidebar using <dl> for neat vertical alignment */
     .quick-facts {
       flex: 1;
       min-width: 220px;
@@ -258,13 +256,95 @@
       }
     }
 
-    /* Section Titles Standardized */
+    /* Section Titles */
     .section-title {
       font-size: 1.6rem;
       font-weight: 700;
       margin-bottom: 2.2rem;
       color: var(--text);
       text-align: left;
+    }
+
+    /* Current Position Section */
+    .current-position-section {
+      max-width: 900px;
+      margin: 0 auto 2.2rem auto;
+      padding: 2.5rem 1.2rem 0 1.2rem;
+    }
+    .current-position-title {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 1.7rem;
+      text-align: left;
+    }
+    .current-position-card {
+      display: flex;
+      align-items: flex-start;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 1.25rem 1.6rem;
+      gap: 1.4rem;
+      margin-bottom: 2rem;
+      border-left: 5px solid var(--accent);
+    }
+    .current-position-logo {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #f2f6fa;
+      border: 1.5px solid #d2e3f8;
+      margin-right: 1.2rem;
+      flex-shrink: 0;
+    }
+    .current-position-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .current-position-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 1rem;
+      font-size: 1.21rem;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    }
+    .current-position-role {
+      color: var(--accent);
+    }
+    .current-position-company {
+      color: var(--text);
+      font-weight: 700;
+    }
+    .current-position-contract {
+      color: #4ca6a6; /* lighter teal */
+      font-size: 1.05rem;
+    }
+    .current-position-details {
+      font-size: 1rem;
+      color: var(--light-text);
+      margin-bottom: 0.2rem;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 700px) {
+      .current-position-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
+        padding: 1.2rem 1rem;
+      }
+      .current-position-logo {
+        margin-right: 0;
+        margin-bottom: 0.7rem;
+      }
+      .current-position-title {
+        font-size: 1.15rem;
+      }
     }
 
     /* Experience Section */
@@ -291,7 +371,7 @@
     }
     .exp-card:hover,
     .exp-card:focus-within {
-      box-shadow: 0 6px 20px 0 rgba(43, 108, 176, 0.1), var(--card-shadow);
+      box-shadow: 0 6px 20px 0 rgba(0, 128, 128, 0.15), var(--card-shadow);
       transform: translateY(-3px) scale(1.01);
       outline: none;
     }
@@ -303,7 +383,7 @@
       background: #f2f6fa;
       margin-right: 0.8rem;
       flex-shrink: 0;
-      border: 1px solid #e7eaf1;
+      border: 1px solid #d2e3f8;
       display: block;
     }
     .exp-content {
@@ -390,7 +470,7 @@
       gap: 0.5rem;
     }
     .skill-pill {
-      background: #e9f1fb;
+      background: #e0f0f0;
       color: var(--accent);
       font-weight: 600;
       border-radius: 999px;
@@ -398,9 +478,9 @@
       font-size: 0.96rem;
       margin-bottom: 0.1rem;
       transition: background 0.17s, color 0.17s;
-      box-shadow: 0 1px 4px 0 rgba(43, 108, 176, 0.05);
+      box-shadow: 0 1px 4px 0 rgba(0, 128, 128, 0.1);
       cursor: pointer;
-      border: 1.5px solid #d2e3f8;
+      border: 1.5px solid #b2d2d2;
     }
     .skill-pill:hover,
     .skill-pill:focus {
@@ -440,7 +520,7 @@
     }
     .portfolio-card:hover,
     .portfolio-card:focus-within {
-      box-shadow: 0 6px 20px 0 rgba(43, 108, 176, 0.1), var(--card-shadow);
+      box-shadow: 0 6px 20px 0 rgba(0, 128, 128, 0.1), var(--card-shadow);
       transform: translateY(-4px) scale(1.014);
       outline: none;
     }
@@ -467,7 +547,7 @@
     }
     .portfolio-links a:hover,
     .portfolio-links a:focus {
-      color: #225ea8;
+      color: #006666;
       text-decoration: underline;
       outline: none;
     }
@@ -527,7 +607,7 @@
     .contact-form input:focus,
     .contact-form textarea:focus {
       outline: 2px solid var(--accent);
-      background: #e9f1fb;
+      background: #e0f0f0;
     }
     .contact-form button {
       padding: 0.65em 2em;
@@ -543,7 +623,7 @@
     }
     .contact-form button:hover,
     .contact-form button:focus {
-      background: #225ea8;
+      background: #006666;
       outline: none;
     }
     .contact-info {
@@ -610,7 +690,7 @@
     }
     #backToTop:hover,
     #backToTop:focus {
-      background-color: #225ea8;
+      background-color: #006666;
       transform: scale(1.1);
       outline: none;
     }
@@ -768,7 +848,6 @@
 
   <!-- Hero / Home -->
   <section class="hero fade-in" id="home">
-    <!-- Use a portrait (rectangular) photo! -->
     <img
       src="profile.png"
       alt="Kyle Tabong profile photo"
@@ -832,7 +911,7 @@
 
   <!-- Current Position Section -->
   <section class="current-position-section fade-in" id="current-position">
-    <h2 class="section-title">Current Position</h2>
+    <h2 class="current-position-title">Current Position</h2>
     <div class="current-position-card">
       <img src="tdbank-logo.png" alt="TD Bank logo" class="current-position-logo" />
       <div class="current-position-content">
@@ -1205,10 +1284,18 @@
   <footer class="site-footer">
     <p>© 2025 Mikhail Tabong. All rights reserved.</p>
     <div class="social-links">
-      <a href="https://linkedin.com/in/mikhail-tabong" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+      <a
+        href="https://linkedin.com/in/mikhail-tabong"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
         >LinkedIn</a
       >
-      <a href="https://github.com/mikhail-tabong" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+      <a
+        href="https://github.com/mikhail-tabong"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
         >GitHub</a
       >
     </div>
