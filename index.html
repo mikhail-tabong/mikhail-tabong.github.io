@@ -5,23 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mikhail "Kyle" Tabong | Portfolio</title>
   <!-- Google Fonts: Lato -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --accent: #008080; /* Teal */
-      --bg: #f5f7f9; /* Very light gray */
-      --white: #ffffff;
-      --text: #2e2e2e; /* Dark charcoal */
-      --light-text: #6e7a85; /* Soft gray-blue */
-      --card-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+      --accent: #506D5F;       /* Deep earthy green */
+      --accent-light: #7A8B77; /* Lighter muted green for hover/focus */
+      --bg: #9CAF88;           /* Sage green background */
+      --white: #f6e3b0f3;
+      --text: #2F3E2F;         /* Deep green-gray */
+      --light-text: #6B7A69;   /* Softer gray-green */
+      --card-shadow: 0 2px 16px 0 rgba(17, 13, 13, 0.09);
       --radius: 18px;
     }
-    html,
-    body {
-      font-family: "Lato", Arial, sans-serif;
+    html, body {
+      font-family: 'Lato', Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       margin: 0;
@@ -33,7 +30,7 @@
       position: sticky;
       top: 0;
       background: var(--white);
-      box-shadow: 0 2px 6px 0 rgba(34, 42, 66, 0.04);
+      box-shadow: 0 2px 6px 0 rgba(0,0,0,0.07);
       z-index: 999;
       padding: 0 2vw;
       display: flex;
@@ -65,7 +62,6 @@
       color: var(--accent);
       outline: none;
     }
-
     /* Hero/Home */
     .hero {
       display: flex;
@@ -78,7 +74,6 @@
       padding: 3rem 1rem 2rem 1rem;
       background: var(--bg);
     }
-    /* Restored original portrait style */
     .hero .portrait {
       width: 350px;
       height: auto;
@@ -138,7 +133,7 @@
     }
     .hero .cta-buttons a:hover,
     .hero .cta-buttons a:focus {
-      background: #006666;
+      background: var(--accent-light);
       color: var(--white);
       transform: translateY(-2px) scale(1.03);
       outline: none;
@@ -149,7 +144,6 @@
       color: var(--white);
       outline: none;
     }
-
     /* About section */
     .about-section {
       display: flex;
@@ -255,7 +249,6 @@
         padding: 1rem 0.7rem;
       }
     }
-
     /* Section Titles */
     .section-title {
       font-size: 1.6rem;
@@ -264,7 +257,6 @@
       color: var(--text);
       text-align: left;
     }
-
     /* Current Position Section */
     .current-position-section {
       max-width: 900px;
@@ -294,8 +286,8 @@
       height: 62px;
       object-fit: contain;
       border-radius: 12px;
-      background: #f2f6fa;
-      border: 1.5px solid #d2e3f8;
+      background: #e6ece4;
+      border: 1.5px solid #b1c2ac;
       margin-right: 1.2rem;
       flex-shrink: 0;
     }
@@ -320,7 +312,7 @@
       font-weight: 700;
     }
     .current-position-contract {
-      color: #4ca6a6; /* lighter teal */
+      color: var(--accent-light);
       font-size: 1.05rem;
     }
     .current-position-details {
@@ -346,7 +338,6 @@
         font-size: 1.15rem;
       }
     }
-
     /* Experience Section */
     .experience-section {
       max-width: 900px;
@@ -371,7 +362,7 @@
     }
     .exp-card:hover,
     .exp-card:focus-within {
-      box-shadow: 0 6px 20px 0 rgba(0, 128, 128, 0.15), var(--card-shadow);
+      box-shadow: 0 6px 20px 0 rgba(80, 109, 95, 0.13), var(--card-shadow);
       transform: translateY(-3px) scale(1.01);
       outline: none;
     }
@@ -380,10 +371,10 @@
       height: 54px;
       object-fit: contain;
       border-radius: 10px;
-      background: #f2f6fa;
+      background: #e6ece4;
       margin-right: 0.8rem;
       flex-shrink: 0;
-      border: 1px solid #d2e3f8;
+      border: 1px solid #b1c2ac;
       display: block;
     }
     .exp-content {
@@ -435,7 +426,6 @@
         margin-right: 0;
       }
     }
-
     /* Skills Section */
     .skills-section {
       max-width: 900px;
@@ -470,7 +460,7 @@
       gap: 0.5rem;
     }
     .skill-pill {
-      background: #e0f0f0;
+      background: #dde7d4;
       color: var(--accent);
       font-weight: 600;
       border-radius: 999px;
@@ -478,9 +468,9 @@
       font-size: 0.96rem;
       margin-bottom: 0.1rem;
       transition: background 0.17s, color 0.17s;
-      box-shadow: 0 1px 4px 0 rgba(0, 128, 128, 0.1);
+      box-shadow: 0 1px 4px 0 rgba(80, 109, 95, 0.09);
       cursor: pointer;
-      border: 1.5px solid #b2d2d2;
+      border: 1.5px solid #b1c2ac;
     }
     .skill-pill:hover,
     .skill-pill:focus {
@@ -496,7 +486,6 @@
         gap: 1.2rem;
       }
     }
-
     /* Portfolio Section */
     .portfolio-section {
       max-width: 1100px;
@@ -520,7 +509,7 @@
     }
     .portfolio-card:hover,
     .portfolio-card:focus-within {
-      box-shadow: 0 6px 20px 0 rgba(0, 128, 128, 0.1), var(--card-shadow);
+      box-shadow: 0 6px 20px 0 rgba(80, 109, 95, 0.10), var(--card-shadow);
       transform: translateY(-4px) scale(1.014);
       outline: none;
     }
@@ -547,11 +536,10 @@
     }
     .portfolio-links a:hover,
     .portfolio-links a:focus {
-      color: #006666;
+      color: var(--accent-light);
       text-decoration: underline;
       outline: none;
     }
-
     /* Services Section */
     .services-section {
       max-width: 750px;
@@ -569,7 +557,6 @@
       margin: 1.2rem 0 0.3rem 1.2rem;
       padding: 0;
     }
-
     /* Contact Section */
     .contact-section {
       max-width: 800px;
@@ -607,7 +594,7 @@
     .contact-form input:focus,
     .contact-form textarea:focus {
       outline: 2px solid var(--accent);
-      background: #e0f0f0;
+      background: #e3f0dc;
     }
     .contact-form button {
       padding: 0.65em 2em;
@@ -623,7 +610,7 @@
     }
     .contact-form button:hover,
     .contact-form button:focus {
-      background: #006666;
+      background: var(--accent-light);
       outline: none;
     }
     .contact-info {
@@ -658,7 +645,6 @@
         gap: 1.5rem;
       }
     }
-
     /* Fade-in animation */
     .fade-in {
       opacity: 0;
@@ -670,7 +656,6 @@
       opacity: 1;
       transform: none;
     }
-
     /* Back to Top Button */
     #backToTop {
       display: none;
@@ -680,7 +665,7 @@
       z-index: 1000;
       font-size: 1.4rem;
       background-color: var(--accent);
-      color: white;
+      color: var(--white);
       border: none;
       padding: 0.6em 0.9em;
       border-radius: 50%;
@@ -690,11 +675,10 @@
     }
     #backToTop:hover,
     #backToTop:focus {
-      background-color: #006666;
+      background-color: var(--accent-light);
       transform: scale(1.1);
       outline: none;
     }
-
     /* Hamburger styles */
     .hamburger {
       display: none;
@@ -704,7 +688,6 @@
       color: var(--text);
       cursor: pointer;
     }
-
     @media (max-width: 768px) {
       nav {
         flex-wrap: wrap;
@@ -728,8 +711,7 @@
         text-align: left;
       }
     }
-
-    /* Footer Styles */
+    /* Footer */
     footer.site-footer {
       text-align: center;
       padding: 20px 10px;
@@ -737,7 +719,7 @@
       color: var(--light-text);
       font-size: 0.9rem;
       margin-top: 60px;
-      border-top: 1px solid #ddd;
+      border-top: 1px solid #b1c2ac;
     }
     footer.site-footer .social-links a {
       color: var(--accent);
@@ -752,7 +734,6 @@
       outline: none;
     }
   </style>
-
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       // Fade-in on scroll
@@ -829,7 +810,6 @@
     });
   </script>
 </head>
-
 <body>
   <!-- Navbar -->
   <nav>
@@ -845,24 +825,15 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
-
   <!-- Hero / Home -->
   <section class="hero fade-in" id="home">
-    <img
-      src="profile.png"
-      alt="Kyle Tabong profile photo"
-      class="portrait"
-      loading="lazy"
-    />
+    <img src="profile.png" alt="Kyle Tabong profile photo" class="portrait" loading="lazy" />
     <h1>Mikhail “Kyle” Tabong</h1>
     <div class="tagline">
-      Aspiring Data Analyst & Information Science Senior – Driven by Analytics,
-      Collaboration, and Results.
+      Aspiring Data Analyst & Information Science Senior – Driven by Analytics, Collaboration, and Results.
     </div>
     <h2>
-      Information Science major at UMD, specializing in data analytics,
-      visualization, and delivering actionable insights for business and
-      healthcare.
+      Information Science major at UMD, specializing in data analytics, visualization, and delivering actionable insights for business and healthcare.
     </h2>
     <div class="cta-buttons">
       <a href="#portfolio">View Portfolio</a>
@@ -870,27 +841,20 @@
       <a href="#contact" class="outline">Contact</a>
     </div>
   </section>
-
   <!-- About Section -->
   <section class="about-section fade-in" id="about">
     <div class="about-main">
       <h3>About Me</h3>
       <p>
-        Mikhail “Kyle” Tabong is a rising senior at the University of Maryland,
-        majoring in Information Science with a concentration in Data Science
-        concentration. Known for exceeding expectations and delivering quality
-        work, I thrive in team settings, values efficiency, and I'm always ready
-        to help others. I held leadership positions in my fraternity Phi Delta
-        Sigma, Inc. and I aim to become a Data Analyst in finance or healthcare
-        sectors after graduating.
+        Mikhail “Kyle” Tabong is a rising senior at the University of Maryland, majoring in Information Science with a concentration in Data Science concentration.
+        Known for exceeding expectations and delivering quality work, I thrive in team settings, values efficiency, and I'm always ready to help others.
+        I held leadership positions in my fraternity Phi Delta Sigma, Inc. and I aim to become a Data Analyst in finance or healthcare sectors after graduating.
       </p>
       <h3>Education</h3>
       <ul>
         <li>
-          <strong
-            >Bachelor’s in Information Science (Data Science Concentration)</strong
-          >,
-          University of Maryland, College Park<br /><em>(Expected: May 2026)</em>
+          <strong>Bachelor’s in Information Science (Data Science Concentration)</strong>, University of Maryland, College Park<br />
+          <em>(Expected: May 2026)</em>
         </li>
         <li><strong>College:</strong> Anne Arundel Community College (2022–2023)</li>
       </ul>
@@ -900,15 +864,11 @@
       <dl>
         <div class="fact-group"><dt>Location:</dt><dd>Annapolis, MD</dd></div>
         <div class="fact-group"><dt>Graduation:</dt><dd>May 2026</dd></div>
-        <div class="fact-group">
-          <dt>Leadership:</dt
-          ><dd>Phi Delta Sigma, Inc. (Fundraising Chair & Warden)</dd>
-        </div>
+        <div class="fact-group"><dt>Leadership:</dt><dd>Phi Delta Sigma, Inc. (Fundraising Chair & Warden)</dd></div>
         <div class="fact-group"><dt>Focus:</dt><dd>Data Science, Analytics, Visualization</dd></div>
       </dl>
     </aside>
   </section>
-
   <!-- Current Position Section -->
   <section class="current-position-section fade-in" id="current-position">
     <h2 class="current-position-title">Current Position</h2>
@@ -928,7 +888,6 @@
       </div>
     </div>
   </section>
-
   <!-- Experience Section -->
   <section class="experience-section fade-in" id="experience">
     <h2 class="section-title">Experience</h2>
@@ -996,7 +955,6 @@
       </div>
     </div>
   </section>
-
   <!-- Skills Section -->
   <section class="skills-section fade-in" id="skills">
     <h2 class="section-title">Skills</h2>
@@ -1057,7 +1015,6 @@
       </div>
     </div>
   </section>
-
   <!-- Portfolio Section -->
   <section class="portfolio-section fade-in" id="portfolio">
     <h2 class="section-title">Portfolio / Projects</h2>
@@ -1080,17 +1037,10 @@
           <li>Collaborated with a team of 5.</li>
         </ul>
         <div class="portfolio-links">
-          <a href="https://github.com/ReservedbyDev/414Final" target="_blank"
-            >GitHub</a
-          >
-          <a
-            href="https://docs.google.com/document/d/1QBsg9b6iYg75UVbAEZNcIoZw9iWH9GyGdgjn27ZhO78/edit?usp=sharing"
-            target="_blank"
-            >Project Document</a
-          >
+          <a href="https://github.com/ReservedbyDev/414Final" target="_blank">GitHub</a>
+          <a href="https://docs.google.com/document/d/1QBsg9b6iYg75UVbAEZNcIoZw9iWH9GyGdgjn27ZhO78/edit?usp=sharing" target="_blank">Project Document</a>
         </div>
       </div>
-
       <!-- Hepatitis Education: Mortality Prediction Using ML -->
       <div class="portfolio-card">
         <img
@@ -1108,17 +1058,10 @@
           <li>Recommended SVM for deployment based on highest sensitivity and AUC.</li>
         </ul>
         <div class="portfolio-links">
-          <a href="https://github.com/iamsamuelm/healthcare-data-analytics" target="_blank"
-            >GitHub</a
-          >
-          <a
-            href="https://docs.google.com/presentation/d/1RMhShOQ0fRifDf3GJQxsEKP08El1Aenu/edit?usp=sharing&ouid=115060521417647917362&rtpof=true&sd=true"
-            target="_blank"
-            >Presentation Link</a
-          >
+          <a href="https://github.com/iamsamuelm/healthcare-data-analytics" target="_blank">GitHub</a>
+          <a href="https://docs.google.com/presentation/d/1RMhShOQ0fRifDf3GJQxsEKP08El1Aenu/edit?usp=sharing&ouid=115060521417647917362&rtpof=true&sd=true" target="_blank">Presentation Link</a>
         </div>
       </div>
-
       <!-- Clustering Spotify Users by Genre to Enhance Personalization -->
       <div class="portfolio-card">
         <img
@@ -1137,12 +1080,9 @@
         </ul>
         <div class="portfolio-links">
           <a href="https://github.com/ReservedbyDev/414Final" target="_blank">GitHub</a>
-          <a href="https://medium.com/@reservedbydev/5f634b841af2" target="_blank"
-            >Medium Article</a
-          >
+          <a href="https://medium.com/@reservedbydev/5f634b841af2" target="_blank">Medium Article</a>
         </div>
       </div>
-
       <!-- Superstore Sales Dashboard -->
       <div class="portfolio-card">
         <img
@@ -1166,7 +1106,6 @@
           >
         </div>
       </div>
-
       <!-- Mapping Product Similarity in E-Commerce -->
       <div class="portfolio-card">
         <img
@@ -1183,9 +1122,7 @@
           <li>Used t-SNE, clustering, and cosine similarity for analysis and insights.</li>
         </ul>
         <div class="portfolio-links">
-          <a href="https://github.com/mikhail-tabong/ecommerce-product-performace-analysis" target="_blank"
-            >GitHub</a
-          >
+          <a href="https://github.com/mikhail-tabong/ecommerce-product-performace-analysis" target="_blank">GitHub</a>
           <a
             href="https://medium.com/@mtabong/mapping-product-similarity-in-e-commerce-a-data-driven-approach-to-identifying-competitors-and-263d93e964fb"
             target="_blank"
@@ -1193,7 +1130,6 @@
           >
         </div>
       </div>
-
       <!-- Arc Advantage: NBA Three-Point Shot Strategy -->
       <div class="portfolio-card">
         <img
@@ -1219,7 +1155,6 @@
       </div>
     </div>
   </section>
-
   <!-- Services Section -->
   <section class="services-section fade-in" id="services">
     <h2 class="section-title">What I Offer</h2>
@@ -1239,7 +1174,6 @@
       </ul>
     </div>
   </section>
-
   <!-- Contact Section -->
   <section class="contact-section fade-in" id="contact">
     <h2 class="section-title">Contact</h2>
@@ -1249,58 +1183,26 @@
         <input type="email" name="email" placeholder="Email" required />
         <textarea name="message" rows="5" placeholder="Message" required></textarea>
         <button type="submit">Send Message</button>
-        <div
-          id="contact-success"
-          style="display:none;color:var(--accent);margin-top:1rem"
-        >
+        <div id="contact-success" style="display:none;color:var(--accent);margin-top:1rem">
           Thank you! Your message was sent.
         </div>
       </form>
       <div class="contact-info">
-        <div>
-          <b>Phone:</b> <a href="tel:8083882725">(808) 388-2725</a>
-        </div>
-        <div>
-          <b>Email:</b>
-          <a href="mailto:mikhailtabong@gmail.com">mikhailtabong@gmail.com</a>
-        </div>
-        <div>
-          <b>LinkedIn:</b>
-          <a href="https://linkedin.com/in/mikhail-tabong" target="_blank"
-            >linkedin.com/in/mikhail-tabong</a
-          >
-        </div>
-        <div>
-          <b>GitHub:</b>
-          <a href="https://github.com/mikhail-tabong" target="_blank"
-            >github.com/mikhail-tabong</a
-          >
-        </div>
+        <div><b>Phone:</b> <a href="tel:8083882725">(808) 388-2725</a></div>
+        <div><b>Email:</b> <a href="mailto:mikhailtabong@gmail.com">mikhailtabong@gmail.com</a></div>
+        <div><b>LinkedIn:</b> <a href="https://linkedin.com/in/mikhail-tabong" target="_blank">linkedin.com/in/mikhail-tabong</a></div>
+        <div><b>GitHub:</b> <a href="https://github.com/mikhail-tabong" target="_blank">github.com/mikhail-tabong</a></div>
       </div>
     </div>
   </section>
-
   <!-- Footer -->
   <footer class="site-footer">
     <p>© 2025 Mikhail Tabong. All rights reserved.</p>
     <div class="social-links">
-      <a
-        href="https://linkedin.com/in/mikhail-tabong"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-        >LinkedIn</a
-      >
-      <a
-        href="https://github.com/mikhail-tabong"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-        >GitHub</a
-      >
+      <a href="https://linkedin.com/in/mikhail-tabong" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+      <a href="https://github.com/mikhail-tabong" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
     </div>
   </footer>
-
   <!-- Back to Top Button -->
   <button id="backToTop" title="Go to top">↑</button>
 </body>
