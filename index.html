@@ -8,13 +8,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --accent: #506D5F;       /* Deep earthy green */
-      --accent-light: #7A8B77; /* Lighter muted green for hover/focus */
-      --bg: #9CAF88;           /* Sage green background */
-      --white: #f6e3b0f3;
-      --text: #2F3E2F;         /* Deep green-gray */
-      --light-text: #6B7A69;   /* Softer gray-green */
-      --card-shadow: 0 2px 16px 0 rgba(17, 13, 13, 0.09);
+      --bg: #343a40; /* Charcoal background */
+      --text: #ced4da; /* Light gray text */
+      --light-text: #adb5bd; /* Muted gray text */
+      --accent: #c5a376; /* Muted gold/brass accent */
+      --accent-light: #d4af84; /* Lighter accent for hover */
+      --white: #f8f9fa; /* Off-white for cards and elements */
+      --card-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.3); /* Adjust shadow for dark background */
       --radius: 18px;
     }
     html, body {
@@ -286,7 +286,7 @@
       height: 62px;
       object-fit: contain;
       border-radius: 12px;
-      background: #e6ece4;
+      background: var(--white); /* Use white for logos on dark background */
       border: 1.5px solid #b1c2ac;
       margin-right: 1.2rem;
       flex-shrink: 0;
@@ -371,7 +371,7 @@
       height: 54px;
       object-fit: contain;
       border-radius: 10px;
-      background: #e6ece4;
+      background: var(--white); /* Use white for logos on dark background */
       margin-right: 0.8rem;
       flex-shrink: 0;
       border: 1px solid #b1c2ac;
@@ -460,14 +460,14 @@
       gap: 0.5rem;
     }
     .skill-pill {
-      background: #dde7d4;
+ background: var(--white); /* Use white for skill pills */
       color: var(--accent);
       font-weight: 600;
       border-radius: 999px;
       padding: 0.4em 1.2em;
       font-size: 0.96rem;
       margin-bottom: 0.1rem;
-      transition: background 0.17s, color 0.17s;
+ transition: background 0.17s, color 0.17s, transform 0.17s, border-color 0.17s;
       box-shadow: 0 1px 4px 0 rgba(80, 109, 95, 0.09);
       cursor: pointer;
       border: 1.5px solid #b1c2ac;
@@ -478,7 +478,7 @@
       color: var(--white);
       border-color: var(--accent);
       transform: translateY(-2px) scale(1.05);
-      outline: none;
+ outline: 2px solid var(--accent);
     }
     @media (max-width: 700px) {
       .skills-grid {
@@ -498,9 +498,7 @@
       gap: 2rem;
     }
     .portfolio-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--card-shadow);
+
       padding: 1.25rem 1.2rem 1.3rem 1.2rem;
       display: flex;
       flex-direction: column;
@@ -510,7 +508,25 @@
     .portfolio-card:hover,
     .portfolio-card:focus-within {
       box-shadow: 0 6px 20px 0 rgba(80, 109, 95, 0.10), var(--card-shadow);
-      transform: translateY(-4px) scale(1.014);
+ transform: translateY(-3px) scale(1.01);
+      outline: none; /* This line was already here, keeping it */
+    }
+    .portfolio-card-link {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 1.25rem 1.2rem 1.3rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.17s, transform 0.16s;
+      min-width: 0;
+      text-decoration: none; /* Remove default link underline */
+      color: inherit; /* Inherit text color */
+    }
+    .portfolio-card-link:hover,
+    .portfolio-card-link:focus {
+      box-shadow: 0 6px 20px 0 rgba(80, 109, 95, 0.10), var(--card-shadow);
+      transform: translateY(-3px) scale(1.01);
       outline: none;
     }
     .portfolio-card h3 {
@@ -568,50 +584,8 @@
       gap: 2.3rem;
       align-items: flex-start;
       flex-wrap: wrap;
-    }
-    .contact-form {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--card-shadow);
-      padding: 1.4rem 1.2rem 1.6rem 1.2rem;
-      flex: 2;
-      min-width: 260px;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      border: 1.2px solid #dde5f1;
+      border: 1.2px solid #6c757d; /* Adjust border color for dark theme */
       border-radius: 8px;
-      font-size: 1rem;
-      padding: 0.7em 1em;
-      font-family: inherit;
-      resize: none;
-      margin-bottom: 0.1rem;
-      background: #f7fafd;
-    }
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: 2px solid var(--accent);
-      background: #e3f0dc;
-    }
-    .contact-form button {
-      padding: 0.65em 2em;
-      border-radius: 8px;
-      background: var(--accent);
-      color: var(--white);
-      font-weight: bold;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      margin-top: 0.2rem;
-      transition: background 0.19s;
-    }
-    .contact-form button:hover,
-    .contact-form button:focus {
-      background: var(--accent-light);
-      outline: none;
     }
     .contact-info {
       flex: 1.2;
@@ -711,6 +685,52 @@
         text-align: left;
       }
     }
+    /* Modal Styles */
+    .modal-overlay {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-color: rgba(0, 0, 0, 0.8); /* Darker overlay for contrast */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1001; /* Higher than navbar */
+      visibility: hidden; /* Initially hidden */
+ opacity: 0; /* Start with 0 opacity */
+ transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .modal-overlay.visible {
+ visibility: visible;
+ opacity: 1;
+    }
+
+ .modal-container {
+      background-color: var(--white); /* Use white for modal background */
+      padding: 20px;
+      border-radius: var(--radius);
+      max-width: 800px;
+      width: 90%;
+      position: relative;
+      max-height: 90vh; /* Limit height */
+      justify-content: center;
+      align-items: center;
+      z-index: 1001; /* Ensure it's above other content */
+ box-shadow: var(--card-shadow);
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--text); /* Use text color for close button */
+    }
+
     /* Footer */
     footer.site-footer {
       text-align: center;
@@ -794,19 +814,42 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
-      // Contact form mock submit
-      const contactForm = document.getElementById("contactForm");
-      const successMsg = document.getElementById("contact-success");
-      if (contactForm) {
-        contactForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-          successMsg.style.display = "block";
-          contactForm.reset();
-          setTimeout(() => {
-            successMsg.style.display = "none";
-          }, 4000);
-        });
+
+      // Modal functionality for portfolio items
+      const modalOverlay = document.querySelector(".modal-overlay");
+      const modalContainer = document.querySelector(".modal-container");
+      const closeButton = document.querySelector(".close-button");
+      const modalContent = document.getElementById("modal-content");
+      const portfolioCards = document.querySelectorAll(".portfolio-card");
+
+      function openModal(content) {
+        modalContent.innerHTML = content;
+        modalOverlay.classList.add("visible");
       }
+
+      function closeModal() {
+        modalOverlay.classList.remove("visible");
+        // Clear content after transition
+        setTimeout(() => {
+          modalContent.innerHTML = "";
+        }, 300);
+      }
+
+      portfolioCards.forEach(card => {
+        card.addEventListener("click", function() {
+          // Get content from the clicked card
+          const cardContent = this.innerHTML;
+          openModal(cardContent);
+        });
+      });
+
+      closeButton.addEventListener("click", closeModal);
+
+      modalOverlay.addEventListener("click", function(e) {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
     });
   </script>
 </head>
@@ -822,6 +865,7 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#services">Services</a></li>
+ <li><a href="blog/index.html">Blog</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -1065,14 +1109,13 @@
     </div>
   </section>
   <!-- Portfolio Section -->
-  <section class="portfolio-section fade-in" id="portfolio">
+ <section class="portfolio-section fade-in" id="portfolio" >
     <h2 class="section-title">Portfolio / Projects</h2>
     <div class="portfolio-grid">
       <!-- Diabetes Data Warehouse Report -->
-      <div class="portfolio-card">
-        <img
-          src="blood_glucose_monitor.png"
-          alt="Diabetes Data Monitoring"
+ <div class="portfolio-card" >
+        <a href="projects/diabetes-data-warehouse.html" class="portfolio-card-link">
+ <img src="blood_glucose_monitor.png" alt="Diabetes Data Monitoring"
           style="width:100%; border-radius:12px; margin-bottom:12px"
         />
         <h3>Diabetes Data Warehouse Report</h3>
@@ -1089,10 +1132,12 @@
           <a href="https://github.com/ReservedbyDev/414Final" target="_blank">GitHub</a>
           <a href="https://docs.google.com/document/d/1QBsg9b6iYg75UVbAEZNcIoZw9iWH9GyGdgjn27ZhO78/edit?usp=sharing" target="_blank">Project Document</a>
         </div>
+ </a>
       </div>
       <!-- Hepatitis Education: Mortality Prediction Using ML -->
-      <div class="portfolio-card">
-        <img
+ <div class="portfolio-card" >
+        <a href="projects/hepatitis-mortality-prediction.html" class="portfolio-card-link">
+ <img
           src="hepatitis_liver.png"
           alt="Hepatitis Mortality Prediction"
           style="width:100%; border-radius:12px; margin-bottom:12px"
@@ -1108,56 +1153,17 @@
         </ul>
         <div class="portfolio-links">
           <a href="https://github.com/iamsamuelm/healthcare-data-analytics" target="_blank">GitHub</a>
-          <a href="https://docs.google.com/presentation/d/1RMhShOQ0fRifDf3GJQxsEKP08El1Aenu/edit?usp=sharing&ouid=115060521417647917362&rtpof=true&sd=true" target="_blank">Presentation Link</a>
-        </div>
-      </div>
-      <!-- Clustering Spotify Users by Genre to Enhance Personalization -->
-      <div class="portfolio-card">
-        <img
-          src="spotify_logo.png"
-          alt="Spotify Clustering Project"
-          style="width:100%; border-radius:12px; margin-bottom:12px"
-        />
-        <h3>Clustering Spotify Users by Genre to Enhance Personalization</h3>
-        <p>
-          Clustered Spotify users by genre preferences using real and simulated
-          data, Flask/PostgreSQL backend, and advanced data science methods.
-        </p>
-        <ul>
-          <li>Applied clustering and t-SNE for user segmentation and visualization.</li>
-          <li>Delivered recommendations for playlist personalization and marketing.</li>
-        </ul>
-        <div class="portfolio-links">
-          <a href="https://github.com/ReservedbyDev/414Final" target="_blank">GitHub</a>
-          <a href="https://medium.com/@reservedbydev/5f634b841af2" target="_blank">Medium Article</a>
-        </div>
-      </div>
-      <!-- Superstore Sales Dashboard -->
-      <div class="portfolio-card">
-        <img
-          src="superstore_sales_dashboard.png"
-          alt="Superstore Sales Dashboard"
-          style="width:100%; border-radius:12px; margin-bottom:12px"
-        />
-        <h3>Superstore Sales Dashboard</h3>
-        <p>
-          Developed an interactive Tableau dashboard to analyze Superstore sales
-          data and visualize key performance metrics.
-        </p>
-        <ul>
-          <li>Enabled dynamic filtering and time-based analysis for decision support.</li>
-        </ul>
-        <div class="portfolio-links">
-          <a
-            href="https://public.tableau.com/app/profile/mikhail.tabong/viz/SuperstoreSalesDashboard_17461064261590/ExecutiveOverview"
+ <a
+ href="https://docs.google.com/presentation/d/1RMhShOQ0fRifDf3GJQxsEKP08El1Aenu/edit?usp=sharing&ouid=115060521417647917362&rtpof=true&sd=true"
             target="_blank"
-            >Dashboard Link</a
-          >
+ >Presentation Link</a
+ >
         </div>
-      </div>
-      <!-- Mapping Product Similarity in E-Commerce -->
+        </a>
+      </div>      <!-- Mapping Product Similarity in E-Commerce -->
       <div class="portfolio-card">
-        <img
+ <a href="projects/ecommerce-product-similarity.html" class="portfolio-card-link" >
+ <img
           src="ecommerce_concept.png"
           alt="E-Commerce Product Similarity"
           style="width:100%; border-radius:12px; margin-bottom:12px"
@@ -1178,10 +1184,88 @@
             >Medium Article</a
           >
         </div>
+ </a>
+      </div>      <!-- Clustering Spotify Users by Genre to Enhance Personalization -->
+      <div class="portfolio-card">
+ <a href="projects/spotify-clustering.html" class="portfolio-card-link" >
+ <img
+          src="spotify_logo.png"
+          alt="Hepatitis Mortality Prediction"
+          style="width:100%; border-radius:12px; margin-bottom:12px"
+        />
+        <h3>Hepatitis Education: Mortality Prediction Using ML</h3>
+        <p>
+          Built clinical ML models (Decision Tree, SVM, KNN) to predict hepatitis
+          mortality, prioritizing ethical AI and fairness across demographics.
+        </p>
+        <ul>
+          <li>Led data cleaning, feature engineering, and model development.</li>
+          <li>Recommended SVM for deployment based on highest sensitivity and AUC.</li>
+        </ul>
+        <div class="portfolio-links">
+          <a href="https://github.com/iamsamuelm/healthcare-data-analytics" target="_blank">GitHub</a>
+          <a href="https://docs.google.com/presentation/d/1RMhShOQ0fRifDf3GJQxsEKP08El1Aenu/edit?usp=sharing&ouid=115060521417647917362&rtpof=true&sd=true" target="_blank">Presentation Link</a>
+        </div>
+ </a>
       </div>
+
+      <!-- Superstore Sales Dashboard -->
+      <div class="portfolio-card">
+ <a href="projects/superstore-sales-dashboard.html" class="portfolio-card-link" >
+ <img
+          src="superstore_sales_dashboard.png"
+          alt="Superstore Sales Dashboard"
+          style="width:100%; border-radius:12px; margin-bottom:12px"
+        />
+        <h3>Superstore Sales Dashboard</h3>
+        <p>
+          Developed an interactive Tableau dashboard to analyze Superstore sales
+          data and visualize key performance metrics.
+        </p>
+        <ul>
+          <li>Enabled dynamic filtering and time-based analysis for decision support.</li>
+        </ul>
+        <div class="portfolio-links">
+          <a
+            href="https://public.tableau.com/app/profile/mikhail.tabong/viz/SuperstoreSalesDashboard_17461064261590/ExecutiveOverview"
+            target="_blank"
+            >Dashboard Link</a
+          >
+        </div>
+ </a>
+      </div>
+
+      <!-- Mapping Product Similarity in E-Commerce -->
+      <div class="portfolio-card">
+ <a href="projects/ecommerce-product-similarity.html" class="portfolio-card-link" >
+ <img
+          src="ecommerce_concept.png"
+          alt="E-Commerce Product Similarity"
+          style="width:100%; border-radius:12px; margin-bottom:12px"
+        />
+        <h3>Mapping Product Similarity in E-Commerce</h3>
+        <p>
+          Developed a machine learning pipeline to visualize product similarities,
+          supporting recommendation, pricing, and bundling strategies.
+        </p>
+        <ul>
+          <li>Used t-SNE, clustering, and cosine similarity for analysis and insights.</li>
+        </ul>
+        <div class="portfolio-links">
+          <a href="https://github.com/mikhail-tabong/ecommerce-product-performace-analysis" target="_blank">GitHub</a>
+          <a
+            href="https://medium.com/@mtabong/mapping-product-similarity-in-e-commerce-a-data-driven-approach-to-identifying-competitors-and-263d93e964fb"
+            target="_blank"
+            >Medium Article</a
+          >
+        </div>
+ </a>
+      </div>
+
       <!-- Arc Advantage: NBA Three-Point Shot Strategy -->
       <div class="portfolio-card">
-        <img
+ <a href="projects/nba-three-point-strategy.html" class="portfolio-card-link" >
+ <img
           src="nba_logo.png"
           alt="NBA Three-Point Shot Strategy"
           style="width:100%; border-radius:12px; margin-bottom:12px"
@@ -1201,6 +1285,7 @@
             >Medium Article</a
           >
         </div>
+ </a>
       </div>
     </div>
   </section>
@@ -1227,15 +1312,6 @@
   <section class="contact-section fade-in" id="contact">
     <h2 class="section-title">Contact</h2>
     <div class="contact-flex">
-      <form class="contact-form" id="contactForm" autocomplete="off">
-        <input type="text" name="name" placeholder="Name" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <textarea name="message" rows="5" placeholder="Message" required></textarea>
-        <button type="submit">Send Message</button>
-        <div id="contact-success" style="display:none;color:var(--accent);margin-top:1rem">
-          Thank you! Your message was sent.
-        </div>
-      </form>
       <div class="contact-info">
         <div><b>Phone:</b> <a href="tel:8083882725">(808) 388-2725</a></div>
         <div><b>Email:</b> <a href="mailto:mikhailtabong@gmail.com">mikhailtabong@gmail.com</a></div>
@@ -1254,5 +1330,16 @@
   </footer>
   <!-- Back to Top Button -->
   <button id="backToTop" title="Go to top">↑</button>
+
+  <!-- Project Modal -->
+  <div class="modal-overlay">
+    <div class="modal-container">
+      <button class="close-button">&times;</button>
+      <div id="modal-content">
+        <!-- Modal content will be loaded here -->
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

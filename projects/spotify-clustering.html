@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spotify Clustering Project | Mikhail Tabong</title>
+  <!-- Google Fonts: Lato -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #343a40; /* Charcoal background */
+      --text: #ced4da; /* Light gray text */
+      --light-text: #adb5bd; /* Muted gray text */
+      --accent: #c5a376; /* Muted gold/brass accent */
+      --accent-light: #d4af84; /* Lighter accent for hover */
+      --white: #f8f9fa; /* Off-white for elements */
+      --card-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.3); /* Adjust shadow for dark background */
+      --radius: 18px;\n    }
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      color: var(--text); /* Ensure text is readable on white background */
+    }
+    h1 {
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px auto;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+    }
+    p {
+      margin-bottom: 15px;
+      color: #333; /* Darker text for readability on white */
+    }
+    .project-links a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 15px;
+      font-weight: bold;
+      transition: color 0.2s ease;
+    }
+    .project-links a:hover {
+      color: var(--accent-light);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Clustering Spotify Users by Genre to Enhance Personalization</h1>
+    <img src="../spotify_logo.png" alt="Spotify Clustering Project" />
+    <p>
+      This project focused on applying unsupervised machine learning techniques to segment Spotify users based on their genre preferences. By analyzing real and simulated user listening data, we aimed to identify distinct user clusters to enhance music personalization and targeted marketing strategies.
+    </p>
+    <p>
+      We utilized advanced data science methods, including clustering algorithms (like K-Means) and dimensionality reduction techniques such as t-SNE, to visualize user segmentation in a meaningful way. A Flask/PostgreSQL backend was implemented to manage the data, providing a robust system for analysis.
+    </p>
+    <p>
+      The insights gained from this project can be leveraged to deliver more relevant playlist recommendations, improve music discovery features, and inform marketing campaigns by targeting specific user segments with tailored content.
+    </p>
+    <div class="project-links">
+      <a href="https://github.com/ReservedbyDev/414Final" target="_blank">GitHub Repository</a>
+      <a href="https://medium.com/@reservedbydev/5f634b841af2" target="_blank">Medium Article</a>
+    </div>
+  </div>
+</body>
+</html>

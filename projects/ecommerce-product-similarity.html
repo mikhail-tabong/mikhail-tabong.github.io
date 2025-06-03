@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Commerce Product Similarity | Mikhail Tabong</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #343a40; /* Charcoal background */
+      --text: #ced4da; /* Light gray text */
+      --light-text: #adb5bd; /* Muted gray text */
+      --accent: #c5a376; /* Muted gold/brass accent */
+      --accent-light: #d4af84; /* Lighter accent for hover */
+      --white: #f8f9fa; /* Off-white for cards and elements */
+      --radius: 18px;
+    }
+    html, body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    h1 {
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 1.5rem auto;
+      border-radius: var(--radius);
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    ul {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+    .project-links {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .project-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      margin: 0 0.8rem;
+      transition: color 0.2s;
+    }
+    .project-links a:hover {
+      color: var(--accent-light);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mapping Product Similarity in E-Commerce</h1>
+    <img src="../ecommerce_concept.png" alt="E-Commerce Product Similarity Concept" />
+    <p>
+      Developed a machine learning pipeline to visualize product similarities,
+      supporting recommendation, pricing, and bundling strategies.
+    </p>
+    <p>
+      This project focused on leveraging data science techniques to understand the relationships between different products in an e-commerce setting. By identifying similar products, the analysis provided actionable insights for improving product recommendations, optimizing pricing strategies, and creating effective product bundles.
+    </p>
+    <ul>
+      <li>Used t-SNE, clustering, and cosine similarity for analysis and insights.</li>
+      <li>Implemented a data processing pipeline to prepare product data for analysis.</li>
+      <li>Visualized product similarities in a lower-dimensional space for easier interpretation.</li>
+      <li>Provided recommendations for applying the findings to business strategies.</li>
+    </ul>
+    <div class="project-links">
+      <a href="https://github.com/mikhail-tabong/ecommerce-product-performace-analysis" target="_blank">GitHub Repository</a>
+      <a href="https://medium.com/@mtabong/mapping-product-similarity-in-e-commerce-a-data-driven-approach-to-identifying-competitors-and-263d93e964fb" target="_blank">Medium Article</a>
+    </div>
+  </div>
+</body>
+</html>
