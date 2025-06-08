@@ -603,12 +603,26 @@
       cursor: pointer;
     }
     #themeToggle {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      right: 4.5rem;
+      z-index: 1000;
       font-size: 1.4rem;
-      background: none;
+      background-color: var(--accent);
+      color: var(--umd-black);
       border: none;
-      color: var(--text);
+      padding: 0.6em 0.9em;
+      border-radius: 50%;
       cursor: pointer;
-      margin-left: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    #themeToggle:hover,
+    #themeToggle:focus {
+      background-color: var(--accent-light);
+      transform: scale(1.1);
+      outline: none;
     }
 
     @media (max-width: 768px) {
@@ -664,7 +678,7 @@
       document.body.classList.add("light-mode");
     }
     if (themeToggle) {
-      themeToggle.textContent = document.body.classList.contains("light-mode") ? "🌙" : "☀";
+      themeToggle.textContent = document.body.classList.contains("light-mode") ? "🔅" : "🔆";
     }
       // Fade-in on scroll
       const observer = new IntersectionObserver(
@@ -718,7 +732,9 @@
         const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
         const percent = (window.scrollY / scrollTotal) * 100;
         progressBar.style.width = percent + "%";
-        backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+        const show = window.scrollY > 300;
+        backToTopBtn.style.display = show ? "block" : "none";
+        if (themeToggle) themeToggle.style.display = show ? "block" : "none";
       };
       window.addEventListener("scroll", updateScrollUI);
       updateScrollUI();
@@ -731,7 +747,7 @@
         themeToggle.addEventListener("click", () => {
           document.body.classList.toggle("light-mode");
           const isLight = document.body.classList.contains("light-mode");
-          themeToggle.textContent = isLight ? "🌙" : "☀";
+          themeToggle.textContent = isLight ? "🔅" : "🔆";
           localStorage.setItem("theme", isLight ? "light" : "dark");
         });
       }
@@ -765,7 +781,6 @@
   <nav>
     <div class="brand">Mikhail Tabong</div>
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">&#9776;</button>
-      <button id="themeToggle" aria-label="Toggle theme">☀</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -1107,6 +1122,7 @@
   </footer>
 
   <button id="backToTop" title="Go to top">↑</button>
+  <button id="themeToggle" aria-label="Toggle theme">🔆</button>
 
 </body>
 </html>
