@@ -28,6 +28,23 @@
       --border-color: #444444; /* Border for subtle separation */
     }
 
+    .light-mode {
+      --bg: #ffffff;
+      --surface: #f2f2f2;
+      --text: #000000;
+      --light-text: #555555;
+      --border-color: #cccccc;
+      --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    body {
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .portfolio-card,
+    .portfolio-filter {
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
     html, body {
       font-family: 'Lato', Arial, sans-serif;
       background: var(--bg);
@@ -389,6 +406,28 @@
       margin: 0 auto 2.8rem auto;
       padding: 2.5rem 1.2rem 0 1.2rem;
     }
+      .portfolio-filters {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+      .portfolio-filter {
+        padding: 0.4rem 0.8rem;
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: background 0.2s, color 0.2s;
+      }
+      .portfolio-filter.active,
+      .portfolio-filter:hover {
+        background: var(--accent);
+        color: var(--umd-black);
+      }
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -536,6 +575,17 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transition: background 0.2s ease, transform 0.2s ease;
     }
+
+    #progressBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 4px;
+      background: var(--accent);
+      z-index: 1000;
+      transition: width 0.2s ease-out;
+    }
     #backToTop:hover,
     #backToTop:focus {
       background-color: var(--accent-light);
@@ -552,6 +602,29 @@
       color: var(--text);
       cursor: pointer;
     }
+    #themeToggle {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      right: 4.5rem;
+      z-index: 1000;
+      font-size: 1.4rem;
+      background-color: var(--accent);
+      color: var(--umd-black);
+      border: none;
+      padding: 0.6em 0.9em;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    #themeToggle:hover,
+    #themeToggle:focus {
+      background-color: var(--accent-light);
+      transform: scale(1.1);
+      outline: none;
+    }
+
     @media (max-width: 768px) {
       nav { flex-wrap: wrap; }
       .hamburger { display: block; }
@@ -598,7 +671,15 @@
     }
   </style>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      document.body.classList.add("light-mode");
+    }
+    if (themeToggle) {
+      themeToggle.textContent = document.body.classList.contains("light-mode") ? "🔅" : "🔆";
+    }
       // Fade-in on scroll
       const observer = new IntersectionObserver(
         (entries) => {
@@ -644,22 +725,58 @@
         });
       });
 
-      // Back to top button
+      // Back to top button and scroll progress
       const backToTopBtn = document.getElementById("backToTop");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-          backToTopBtn.style.display = "block";
-        } else {
-          backToTopBtn.style.display = "none";
-        }
-      });
+      const progressBar = document.getElementById("progressBar");
+      const updateScrollUI = () => {
+        const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = (window.scrollY / scrollTotal) * 100;
+        progressBar.style.width = percent + "%";
+        const show = window.scrollY > 300;
+        backToTopBtn.style.display = show ? "block" : "none";
+        if (themeToggle) themeToggle.style.display = show ? "block" : "none";
+      };
+      window.addEventListener("scroll", updateScrollUI);
+      updateScrollUI();
       backToTopBtn.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
+
+      // Theme toggle with persistence
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          document.body.classList.toggle("light-mode");
+          const isLight = document.body.classList.contains("light-mode");
+          themeToggle.textContent = isLight ? "🔅" : "🔆";
+          localStorage.setItem("theme", isLight ? "light" : "dark");
+        });
+      }
+
+      // Portfolio filtering
+      const filterButtons = document.querySelectorAll(".portfolio-filter");
+      const portfolioCards = document.querySelectorAll(".portfolio-card");
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const category = btn.dataset.filter;
+          filterButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          portfolioCards.forEach((card) => {
+            const cardCat = card.dataset.category;
+            if (category === "all" || cardCat.includes(category)) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
     });
   </script>
 </head>
 <body>
+
+  <div id="progressBar"></div>
 
   <nav>
     <div class="brand">Mikhail Tabong</div>
@@ -886,9 +1003,16 @@
 
   <section class="portfolio-section fade-in" id="portfolio">
     <h2 class="section-title">Portfolio / Projects</h2>
+    <div class="portfolio-filters">
+      <button class="portfolio-filter active" data-filter="all">All</button>
+      <button class="portfolio-filter" data-filter="data-eng">Data Engineering</button>
+      <button class="portfolio-filter" data-filter="ml">Machine Learning</button>
+      <button class="portfolio-filter" data-filter="viz">Visualization</button>
+      <button class="portfolio-filter" data-filter="analysis">Analysis</button>
+    </div>
     <div class="portfolio-grid">
 
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-category="data-eng">
         <img src="blood_glucose_monitor.png" alt="Diabetes Data Monitoring" loading="lazy" />
         <div class="portfolio-content">
           <h3>Diabetes Data Warehouse Report</h3>
@@ -904,7 +1028,7 @@
         </div>
       </div>
 
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-category="ml">
         <img src="hepatitis_liver.png" alt="Illustration of a liver for Hepatitis study" loading="lazy" />
         <div class="portfolio-content">
           <h3>Hepatitis Education: Mortality Prediction Using ML</h3>
@@ -920,7 +1044,7 @@
         </div>
       </div>
 
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-category="ml">
         <img src="ecommerce_concept.png" alt="Abstract e-commerce concept graphic" loading="lazy" />
         <div class="portfolio-content">
           <h3>Mapping Product Similarity in E-Commerce</h3>
@@ -936,7 +1060,7 @@
         </div>
       </div>
 
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-category="viz">
         <img src="superstore_sales_dashboard.png" alt="Screenshot of a sales dashboard" loading="lazy" />
         <div class="portfolio-content">
           <h3>Superstore Sales Dashboard</h3>
@@ -949,7 +1073,7 @@
         </div>
       </div>
 
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-category="analysis">
         <img src="nba_logo.png" alt="NBA Logo" loading="lazy" />
         <div class="portfolio-content">
           <h3>Arc Advantage: NBA Three-Point Shot Strategy</h3>
@@ -998,6 +1122,7 @@
   </footer>
 
   <button id="backToTop" title="Go to top">↑</button>
+  <button id="themeToggle" aria-label="Toggle theme">🔆</button>
 
 </body>
 </html>
