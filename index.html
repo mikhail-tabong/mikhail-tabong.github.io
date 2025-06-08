@@ -7,15 +7,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f8f9fa; /* Off-white/light gray background */
-      --surface: #ffffff; /* Pure white for cards and foreground elements */
-      --text: #212529; /* A strong, dark gray for high readability */
-      --light-text: #6c757d; /* Muted gray for secondary text */
-      --accent: #007bff; /* A vibrant, professional blue */
-      --accent-light: #3395ff; /* A lighter blue for hover states */
-      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* Softer, more subtle shadow */
-      --radius: 12px; /* Slightly refined border radius */
-      --border-color: #dee2e6; /* A consistent border color */
+      /* UMD Official Palette */
+      --umd-red: #E21833;
+      --umd-gold: #FFD520;
+      --umd-black: #000000;
+      --umd-white: #FFFFFF;
+      --umd-light-gray: #D9D9D9;
+      --umd-medium-gray: #9C9A9B;
+
+      /* UMD Dark Theme Variables */
+      --bg: #1A1A1A; /* Dark charcoal background */
+      --surface: #2C2C2C; /* Lighter gray for cards */
+      --text: var(--umd-white);
+      --light-text: var(--umd-medium-gray);
+      --accent: var(--umd-red);
+      --accent-light: #F05566; /* A brighter red for hover */
+      --accent-secondary: var(--umd-gold);
+      --card-shadow: none; /* Use borders instead of shadows in dark mode */
+      --radius: 12px;
+      --border-color: #444444; /* Border for subtle separation */
     }
 
     html, body {
@@ -31,8 +41,9 @@
     nav {
       position: sticky;
       top: 0;
-      background: var(--surface);
-      box-shadow: var(--card-shadow);
+      background: rgba(44, 44, 44, 0.8); /* Dark semi-transparent surface */
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
       z-index: 999;
       padding: 0 2vw;
       display: flex;
@@ -81,9 +92,8 @@
       height: auto;
       object-fit: cover;
       border-radius: 16px;
-      box-shadow: var(--card-shadow);
       margin-bottom: 1.2rem;
-      border: 5px solid var(--surface);
+      border: 3px solid var(--accent); /* Sharp red border */
       flex-shrink: 0;
     }
     .hero h1 {
@@ -103,9 +113,9 @@
     }
     .hero .tagline {
       font-size: 1.17rem;
-      font-weight: 500;
+      font-weight: 700;
       margin-bottom: 1.7rem;
-      color: var(--accent);
+      color: var(--accent-secondary); /* Gold pops on dark background */
       flex-basis: 100%;
       text-align: center;
     }
@@ -120,17 +130,16 @@
       padding: 0.68em 2.2em;
       border-radius: var(--radius);
       background: var(--accent);
-      color: var(--surface);
+      color: var(--umd-black); /* Black text on red button for contrast */
       font-weight: bold;
       text-decoration: none;
       font-size: 1rem;
       margin-bottom: 0.2rem;
       transition: background 0.2s, transform 0.2s;
-      box-shadow: var(--card-shadow);
       border: 2px solid var(--accent);
     }
     .hero .cta-buttons a.outline {
-      background: var(--surface);
+      background: transparent;
       color: var(--accent);
       border: 2px solid var(--accent);
     }
@@ -138,14 +147,14 @@
     .hero .cta-buttons a:focus {
       background: var(--accent-light);
       border-color: var(--accent-light);
-      color: var(--surface);
+      color: var(--umd-black);
       transform: translateY(-2px) scale(1.03);
       outline: none;
     }
     .hero .cta-buttons a.outline:hover,
     .hero .cta-buttons a.outline:focus {
       background: var(--accent);
-      color: var(--surface);
+      color: var(--umd-black);
       outline: none;
     }
 
@@ -179,7 +188,6 @@
       min-width: 280px;
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--card-shadow);
       padding: 1.5rem 1.2rem;
       font-size: 1rem;
       border: 1px solid var(--border-color);
@@ -270,14 +278,14 @@
       align-items: flex-start;
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--card-shadow);
       padding: 1.25rem 1.6rem;
       gap: 1.4rem;
       border-left: 5px solid var(--accent);
-      transition: box-shadow 0.2s, transform 0.2s;
+      transition: border-color 0.2s, transform 0.2s;
+      border: 1px solid var(--border-color);
     }
     .exp-card:hover, .current-position-card:hover {
-      box-shadow: 0 6px 20px 0 rgba(0,0,0,0.1);
+      border-color: var(--accent);
       transform: translateY(-4px);
     }
     .exp-logo, .current-position-logo {
@@ -285,10 +293,12 @@
       height: 62px;
       object-fit: contain;
       border-radius: 12px;
-      background: var(--surface);
+      background: var(--umd-white); /* Keep logos on a white background for visibility */
       border: 1px solid var(--border-color);
       margin-right: 1.2rem;
       flex-shrink: 0;
+      padding: 4px;
+      box-sizing: border-box;
     }
     .exp-content, .current-position-content { flex: 1; min-width: 0; }
     .exp-header, .current-position-header {
@@ -345,7 +355,7 @@
     .skill-group {
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-color);
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
@@ -387,22 +397,16 @@
     .portfolio-card {
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--card-shadow);
-      transition: box-shadow 0.2s, transform 0.2s;
+      border: 1px solid var(--border-color);
+      transition: border-color 0.2s, transform 0.2s;
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      cursor: default; /* Card itself is not clickable */
     }
     .portfolio-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    }
-    .portfolio-card-link {
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
+      border-color: var(--accent);
     }
     .portfolio-card img {
         width: 100%;
@@ -431,24 +435,28 @@
       margin: 0.65rem 0 1.5rem 1.1rem;
       padding: 0;
     }
+    
+    /* NEW: Styles for Icon Links */
     .portfolio-links {
-      margin-top: auto;
+      margin-top: auto; /* Pushes icons to the bottom */
+      display: flex;
+      gap: 1.25rem; /* Space between icons */
     }
     .portfolio-links a {
+      color: var(--light-text);
       text-decoration: none;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .portfolio-links a:hover {
       color: var(--accent);
-      font-weight: 700;
-      margin-right: 1.1rem;
-      font-size: 0.98rem;
-      transition: color 0.16s;
+      transform: scale(1.1);
     }
-    .portfolio-links a:hover,
-    .portfolio-links a:focus {
-      color: var(--accent-light);
-      text-decoration: underline;
-      outline: none;
+    .portfolio-links a svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor; /* SVG color will inherit from the 'a' tag color */
     }
-
+    
     /* Services Section */
     .services-section {
       max-width: 750px;
@@ -458,7 +466,7 @@
     .services-card {
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-color);
       padding: 2rem;
       font-size: 1.05rem;
       line-height: 1.7;
@@ -480,7 +488,7 @@
       font-size: 1.1rem;
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-color);
       padding: 2rem;
       display: flex;
       flex-direction: column;
@@ -520,7 +528,7 @@
       z-index: 1000;
       font-size: 1.4rem;
       background-color: var(--accent);
-      color: var(--surface);
+      color: var(--umd-black);
       border: none;
       padding: 0.6em 0.9em;
       border-radius: 50%;
@@ -652,6 +660,7 @@
   </script>
 </head>
 <body>
+
   <nav>
     <div class="brand">Mikhail Tabong</div>
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">&#9776;</button>
@@ -758,7 +767,7 @@
         </div>
         <div class="current-position-details">
           <span>Washington, DC</span>
-          <span>Start: June 2025</span>
+          <span>June 2025 – Present</span>
         </div>
       </div>
     </div>
@@ -872,72 +881,79 @@
   <section class="portfolio-section fade-in" id="portfolio">
     <h2 class="section-title">Portfolio / Projects</h2>
     <div class="portfolio-grid">
+
       <div class="portfolio-card">
-        <a href="projects/diabetes-data-warehouse.html" class="portfolio-card-link" aria-label="View Diabetes Data Warehouse Report project">
-          <img src="blood_glucose_monitor.png" alt="Diabetes Data Monitoring" loading="lazy" />
-          <div class="portfolio-content">
-            <h3>Diabetes Data Warehouse Report</h3>
-            <p>Designed and implemented a research-ready SQL data warehouse with over 70K+ patient records and a focus on DEI and privacy.</p>
-            <div class="portfolio-links">
-              <a href="https://github.com/ReservedbyDev/414Final" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://docs.google.com/document/d/1QBsg9b6iYg75UVbAEZNcIoZw9iWH9GyGdgjn27ZhO78/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Project Document</a>
-            </div>
+        <img src="blood_glucose_monitor.png" alt="Diabetes Data Monitoring" loading="lazy" />
+        <div class="portfolio-content">
+          <h3>Diabetes Data Warehouse Report</h3>
+          <p>Designed and implemented a research-ready SQL data warehouse with over 70K+ patient records and a focus on DEI and privacy.</p>
+          <div class="portfolio-links">
+            <a href="https://github.com/ReservedbyDev/414Final" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub" title="View on GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            </a>
+            <a href="https://docs.google.com/document/d/1QBsg9b6iYg75UVbAEZNcIoZw9iWH9GyGdgjn27ZhO78/edit?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="View Project Document" title="View Project Document">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path></svg>
+            </a>
           </div>
-        </a>
+        </div>
       </div>
 
       <div class="portfolio-card">
-        <a href="projects/hepatitis-mortality-prediction.html" class="portfolio-card-link" aria-label="View Hepatitis Mortality Prediction project">
-          <img src="hepatitis_liver.png" alt="Illustration of a liver for Hepatitis study" loading="lazy" />
-          <div class="portfolio-content">
-            <h3>Hepatitis Education: Mortality Prediction Using ML</h3>
-            <p>Built clinical ML models (Decision Tree, SVM, KNN) to predict hepatitis mortality, prioritizing ethical AI and fairness across demographics.</p>
-            <div class="portfolio-links">
-              <a href="https://github.com/iamsamuelm/healthcare-data-analytics" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://docs.google.com/presentation/d/1RMhShOQ0fRifDf3GJQxsEKP08El1Aenu/edit?usp=sharing&ouid=115060521417647917362&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">Presentation</a>
-            </div>
+        <img src="hepatitis_liver.png" alt="Illustration of a liver for Hepatitis study" loading="lazy" />
+        <div class="portfolio-content">
+          <h3>Hepatitis Education: Mortality Prediction Using ML</h3>
+          <p>Built clinical ML models (Decision Tree, SVM, KNN) to predict hepatitis mortality, prioritizing ethical AI and fairness across demographics.</p>
+          <div class="portfolio-links">
+            <a href="https://github.com/iamsamuelm/healthcare-data-analytics" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub" title="View on GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            </a>
+            <a href="https://docs.google.com/presentation/d/1RMhShOQ0fRifDf3GJQxsEKP08El1Aenu/edit?usp=sharing&ouid=115060521417647917362&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" aria-label="View Presentation" title="View Presentation">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path></svg>
+            </a>
           </div>
-        </a>
+        </div>
       </div>
 
       <div class="portfolio-card">
-        <a href="projects/ecommerce-product-similarity.html" class="portfolio-card-link" aria-label="View E-Commerce Product Similarity project">
-          <img src="ecommerce_concept.png" alt="Abstract e-commerce concept graphic" loading="lazy" />
-          <div class="portfolio-content">
-            <h3>Mapping Product Similarity in E-Commerce</h3>
-            <p>Developed an ML pipeline to visualize product similarities, supporting recommendation, pricing, and bundling strategies using t-SNE and clustering.</p>
-            <div class="portfolio-links">
-              <a href="https://github.com/mikhail-tabong/ecommerce-product-performace-analysis" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://medium.com/@mtabong/mapping-product-similarity-in-e-commerce-a-data-driven-approach-to-identifying-competitors-and-263d93e964fb" target="_blank" rel="noopener noreferrer">Medium Article</a>
-            </div>
+        <img src="ecommerce_concept.png" alt="Abstract e-commerce concept graphic" loading="lazy" />
+        <div class="portfolio-content">
+          <h3>Mapping Product Similarity in E-Commerce</h3>
+          <p>Developed an ML pipeline to visualize product similarities, supporting recommendation, pricing, and bundling strategies using t-SNE and clustering.</p>
+          <div class="portfolio-links">
+            <a href="https://github.com/mikhail-tabong/ecommerce-product-performace-analysis" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub" title="View on GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            </a>
+            <a href="https://medium.com/@mtabong/mapping-product-similarity-in-e-commerce-a-data-driven-approach-to-identifying-competitors-and-263d93e964fb" target="_blank" rel="noopener noreferrer" aria-label="Read Medium Article" title="Read Medium Article">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path></svg>
+            </a>
           </div>
-        </a>
+        </div>
       </div>
 
       <div class="portfolio-card">
-        <a href="projects/superstore-sales-dashboard.html" class="portfolio-card-link" aria-label="View Superstore Sales Dashboard project">
-          <img src="superstore_sales_dashboard.png" alt="Screenshot of a sales dashboard" loading="lazy" />
-          <div class="portfolio-content">
-            <h3>Superstore Sales Dashboard</h3>
-            <p>Developed an interactive Tableau dashboard to analyze Superstore sales data and visualize key performance metrics, enabling dynamic filtering for decision support.</p>
-            <div class="portfolio-links">
-              <a href="https://public.tableau.com/app/profile/mikhail.tabong/viz/SuperstoreSalesDashboard_17461064261590/ExecutiveOverview" target="_blank" rel="noopener noreferrer">Dashboard Link</a>
-            </div>
+        <img src="superstore_sales_dashboard.png" alt="Screenshot of a sales dashboard" loading="lazy" />
+        <div class="portfolio-content">
+          <h3>Superstore Sales Dashboard</h3>
+          <p>Developed an interactive Tableau dashboard to analyze Superstore sales data and visualize key performance metrics, enabling dynamic filtering for decision support.</p>
+          <div class="portfolio-links">
+            <a href="https://public.tableau.com/app/profile/mikhail.tabong/viz/SuperstoreSalesDashboard_17461064261590/ExecutiveOverview" target="_blank" rel="noopener noreferrer" aria-label="View Tableau Dashboard" title="View Tableau Dashboard">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path></svg>
+            </a>
           </div>
-        </a>
+        </div>
       </div>
 
       <div class="portfolio-card">
-        <a href="projects/nba-three-point-strategy.html" class="portfolio-card-link" aria-label="View NBA Three-Point Shot Strategy project">
-          <img src="nba_logo.png" alt="NBA Logo" loading="lazy" />
-          <div class="portfolio-content">
-            <h3>Arc Advantage: NBA Three-Point Shot Strategy</h3>
-            <p>Analyzed NBA trends using regression and historical data to uncover the evolution and impact of the three-point shot on offensive strategy.</p>
-            <div class="portfolio-links">
-              <a href="https://medium.com/inst414-data-science-tech/arc-advantage-unpacking-the-strategic-edge-of-the-three-point-shot-ff5e42a09415" target="_blank" rel="noopener noreferrer">Medium Article</a>
-            </div>
+        <img src="nba_logo.png" alt="NBA Logo" loading="lazy" />
+        <div class="portfolio-content">
+          <h3>Arc Advantage: NBA Three-Point Shot Strategy</h3>
+          <p>Analyzed NBA trends using regression and historical data to uncover the evolution and impact of the three-point shot on offensive strategy.</p>
+          <div class="portfolio-links">
+            <a href="https://medium.com/inst414-data-science-tech/arc-advantage-unpacking-the-strategic-edge-of-the-three-point-shot-ff5e42a09415" target="_blank" rel="noopener noreferrer" aria-label="Read Medium Article" title="Read Medium Article">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path></svg>
+            </a>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </section>
