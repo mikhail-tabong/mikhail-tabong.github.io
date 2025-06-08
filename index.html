@@ -617,6 +617,8 @@
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transition: background 0.2s ease, transform 0.2s ease;
+      align-items: center;
+      justify-content: center;
     }
     #themeToggle:hover,
     #themeToggle:focus {
@@ -670,6 +672,7 @@
       outline: none;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
     const themeToggle = document.getElementById("themeToggle");
@@ -678,8 +681,11 @@
       document.body.classList.add("light-mode");
     }
     if (themeToggle) {
-      themeToggle.textContent = document.body.classList.contains("light-mode") ? "🔅" : "🔆";
+      themeToggle.innerHTML = document.body.classList.contains("light-mode")
+        ? '<i data-lucide="sun"></i>'
+        : '<i data-lucide="moon"></i>';
     }
+    if (window.lucide) lucide.createIcons();
       // Fade-in on scroll
       const observer = new IntersectionObserver(
         (entries) => {
@@ -734,7 +740,7 @@
         progressBar.style.width = percent + "%";
         const show = window.scrollY > 300;
         backToTopBtn.style.display = show ? "block" : "none";
-        if (themeToggle) themeToggle.style.display = show ? "block" : "none";
+        if (themeToggle) themeToggle.style.display = show ? "flex" : "none";
       };
       window.addEventListener("scroll", updateScrollUI);
       updateScrollUI();
@@ -747,8 +753,11 @@
         themeToggle.addEventListener("click", () => {
           document.body.classList.toggle("light-mode");
           const isLight = document.body.classList.contains("light-mode");
-          themeToggle.textContent = isLight ? "🔅" : "🔆";
+          themeToggle.innerHTML = isLight
+            ? '<i data-lucide="sun"></i>'
+            : '<i data-lucide="moon"></i>';
           localStorage.setItem("theme", isLight ? "light" : "dark");
+          if (window.lucide) lucide.createIcons();
         });
       }
 
@@ -1122,7 +1131,7 @@
   </footer>
 
   <button id="backToTop" title="Go to top">↑</button>
-  <button id="themeToggle" aria-label="Toggle theme">🔆</button>
+  <button id="themeToggle" aria-label="Toggle theme"><i data-lucide="moon"></i></button>
 
 </body>
 </html>
