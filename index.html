@@ -1,272 +1,248 @@
-<style>
-  :root {
-    --bg: #f8f9fa; /* Off-white/light gray background */
-    --surface: #ffffff; /* Pure white for cards and foreground elements */
-    --text: #212529; /* A strong, dark gray for high readability */
-    --light-text: #6c757d; /* Muted gray for secondary text */
-    --accent: #007bff; /* A vibrant, professional blue */
-    --accent-light: #3395ff; /* A lighter blue for hover states */
-    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* Softer, more subtle shadow */
-    --radius: 12px; /* Slightly refined border radius */
-    --border-color: #dee2e6; /* A consistent border color */
-  }
-
-  html, body {
-    font-family: 'Lato', Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text); /* Changed to primary text color */
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-  }
-
-  /* Navbar */
-  nav {
-    position: sticky;
-    top: 0;
-    background: var(--surface); /* Changed to white for a clean, floating look */
-    box-shadow: var(--card-shadow); /* Use the new subtle shadow */
-    z-index: 999;
-    padding: 0 2vw;
-    display: flex;
-    align-items: center;
-    height: 60px;
-    justify-content: space-between;
-  }
-  nav .brand {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--text);
-    letter-spacing: 1px;
-  }
-  nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2vw;
-    margin: 0;
-    padding: 0;
-  }
-  nav ul li a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  nav ul li a:hover,
-  nav ul li a:focus {
-    color: var(--accent); /* Links now turn blue on hover */
-    outline: none;
-  }
-
-  /* Hero/Home */
-  .hero {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 2rem;
-    justify-content: center;
-    min-height: 80vh;
-    text-align: center;
-    padding: 3rem 1rem 2rem 1rem;
-    background: var(--bg);
-  }
-  .hero .portrait {
-    width: 350px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: var(--card-shadow);
-    margin-bottom: 1.2rem;
-    border: 5px solid var(--surface); /* Border is now surface color to blend better */
-    flex-shrink: 0;
-  }
-  .hero h1 {
-    font-size: 2.1rem;
-    margin: 0.4rem 0 0.3rem 0;
-    flex-basis: 100%;
-    text-align: center;
-    color: var(--text);
-  }
-  .hero h2 {
-    font-size: 1.05rem;
-    color: var(--light-text);
-    font-weight: 400;
-    margin-bottom: 1rem;
-    flex-basis: 100%;
-    text-align: center;
-  }
-  .hero .tagline {
-    font-size: 1.17rem;
-    font-weight: 500;
-    margin-bottom: 1.7rem;
-    color: var(--accent);
-    flex-basis: 100%;
-    text-align: center;
-  }
-  .hero .cta-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-basis: 100%;
-  }
-  .hero .cta-buttons a {
-    padding: 0.68em 2.2em;
-    border-radius: var(--radius);
-    background: var(--accent);
-    color: var(--surface);
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1rem;
-    margin-bottom: 0.2rem;
-    transition: background 0.2s, transform 0.2s;
-    box-shadow: var(--card-shadow);
-    border: none;
-  }
-  .hero .cta-buttons a.outline {
-    background: var(--surface);
-    color: var(--accent);
-    border: 2px solid var(--accent);
-  }
-  .hero .cta-buttons a:hover,
-  .hero .cta-buttons a:focus {
-    background: var(--accent-light);
-    color: var(--surface);
-    transform: translateY(-2px) scale(1.03);
-    outline: none;
-  }
-  .hero .cta-buttons a.outline:hover,
-  .hero .cta-buttons a.outline:focus {
-    background: var(--accent);
-    color: var(--surface);
-    outline: none;
-  }
-
-  /* About section */
-  .about-section {
-    display: flex;
-    gap: 2.5rem;
-    justify-content: center;
-    align-items: flex-start;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 3.2rem 1.5rem;
-  }
-  .about-main {
-    flex: 2;
-    min-width: 260px;
-  }
-  .about-main h3 {
-    font-size: 1.35rem;
-    margin-bottom: 1.1rem;
-    font-weight: 700;
-    color: var(--text);
-  }
-  .about-main p {
-    margin-bottom: 1.15rem;
-    line-height: 1.7;
-    color: var(--text);
-  }
-  .about-main ul {
-    padding-left: 1.3rem;
-    margin: 0.3rem 0 1.1rem 0;
-  }
-  .about-main li {
-    margin-bottom: 0.38rem;
-    line-height: 1.6;
-  }
-  .about-main strong {
-    font-weight: bold;
-    color: var(--text);
-  }
-  .about-main em {
-    font-style: italic;
-    color: inherit;
-  }
-  .quick-facts {
-    flex: 1;
-    min-width: 220px;
-    background: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: var(--card-shadow);
-    padding: 1.5rem 1.2rem;
-    margin-top: 0.2rem;
-    font-size: 1rem;
-  }
-  .quick-facts h4 {
-    color: var(--accent);
-    font-size: 1.09rem;
-    margin-bottom: 1.05rem;
-    font-weight: 700;
-  }
-  .quick-facts dl { margin: 0; }
-  .quick-facts dt {
-    font-weight: 700;
-    display: inline;
-    color: var(--text);
-  }
-  .quick-facts dd {
-    margin: 0 0 0.8rem 0.2rem;
-    display: inline;
-    color: var(--light-text);
-  }
-  .quick-facts .fact-group {
-    margin-bottom: 0.4rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.3rem;
-  }
-  
-  .cert-link {
-    color: var(--accent); /* Make cert link stand out */
-    text-decoration: none;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  .cert-link:hover,
-  .cert-link:focus {
-    text-decoration: underline;
-    outline: none;
-  }
-
-  @media (max-width: 900px) {
-    .about-section {
-      flex-direction: column;
-      gap: 2.2rem;
-      padding: 2.5rem 1rem;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mikhail "Kyle" Tabong | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f8f9fa; /* Off-white/light gray background */
+      --surface: #ffffff; /* Pure white for cards and foreground elements */
+      --text: #212529; /* A strong, dark gray for high readability */
+      --light-text: #6c757d; /* Muted gray for secondary text */
+      --accent: #007bff; /* A vibrant, professional blue */
+      --accent-light: #3395ff; /* A lighter blue for hover states */
+      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* Softer, more subtle shadow */
+      --radius: 12px; /* Slightly refined border radius */
+      --border-color: #dee2e6; /* A consistent border color */
     }
-    .quick-facts {
-      width: 100%;
-      box-sizing: border-box;
+
+    html, body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
     }
-  }
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 1.25rem; }
-    .about-main h3 { font-size: 1.11rem; }
-    .about-main ul { padding-left: 1rem; }
-    .hero .cta-buttons a { font-size: 0.93rem; }
-    .about-section { padding: 1.2rem 0.4rem; }
-    .quick-facts {
-      font-size: 0.97rem;
-      padding: 1rem 0.7rem;
-    }
-  }
 
-  /* Section Titles */
-  .section-title, .current-position-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: var(--text);
-    text-align: center; /* Center section titles for modern look */
-    padding-bottom: 0.5rem;
-    position: relative;
-  }
-  /* Underline for section titles */
-  .section-title::after, .current-position-title::after {
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--surface);
+      box-shadow: var(--card-shadow);
+      z-index: 999;
+      padding: 0 2vw;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      justify-content: space-between;
+    }
+    nav .brand {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--text);
+      letter-spacing: 1px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2vw;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+      color: var(--accent);
+      outline: none;
+    }
+
+    /* Hero/Home */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+      padding: 3rem 1rem 2rem 1rem;
+    }
+    .hero .portrait {
+      width: 350px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 1.2rem;
+      border: 5px solid var(--surface);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-size: 2.1rem;
+      margin: 0.4rem 0 0.3rem 0;
+      flex-basis: 100%;
+      text-align: center;
+      color: var(--text);
+    }
+    .hero h2 {
+      font-size: 1.05rem;
+      color: var(--light-text);
+      font-weight: 400;
+      margin-bottom: 1rem;
+      flex-basis: 100%;
+      text-align: center;
+    }
+    .hero .tagline {
+      font-size: 1.17rem;
+      font-weight: 500;
+      margin-bottom: 1.7rem;
+      color: var(--accent);
+      flex-basis: 100%;
+      text-align: center;
+    }
+    .hero .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      flex-basis: 100%;
+    }
+    .hero .cta-buttons a {
+      padding: 0.68em 2.2em;
+      border-radius: var(--radius);
+      background: var(--accent);
+      color: var(--surface);
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: var(--card-shadow);
+      border: 2px solid var(--accent);
+    }
+    .hero .cta-buttons a.outline {
+      background: var(--surface);
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+    .hero .cta-buttons a:hover,
+    .hero .cta-buttons a:focus {
+      background: var(--accent-light);
+      border-color: var(--accent-light);
+      color: var(--surface);
+      transform: translateY(-2px) scale(1.03);
+      outline: none;
+    }
+    .hero .cta-buttons a.outline:hover,
+    .hero .cta-buttons a.outline:focus {
+      background: var(--accent);
+      color: var(--surface);
+      outline: none;
+    }
+
+    /* About section */
+    .about-section {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3.2rem 1.5rem;
+    }
+    .about-main {
+      flex: 2;
+      min-width: 300px;
+    }
+    .about-main h3 {
+      font-size: 1.35rem;
+      margin-bottom: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .about-main p {
+      margin-bottom: 1.15rem;
+      line-height: 1.7;
+    }
+    .quick-facts {
+      flex: 1;
+      min-width: 280px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 1.5rem 1.2rem;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+    }
+    .quick-facts h4 {
+      color: var(--accent);
+      font-size: 1.09rem;
+      margin-bottom: 1.05rem;
+      font-weight: 700;
+    }
+    .quick-facts dl { margin: 0; }
+    .quick-facts dt {
+      font-weight: 700;
+      display: inline;
+      color: var(--text);
+    }
+    .quick-facts dd {
+      margin: 0 0 0.8rem 0.2rem;
+      display: inline;
+      color: var(--light-text);
+    }
+    .quick-facts .fact-group {
+      margin-bottom: 0.4rem;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+    .cert-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .cert-link:hover,
+    .cert-link:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    @media (max-width: 900px) {
+      .about-section {
+        flex-direction: column;
+        gap: 2.2rem;
+        padding: 2.5rem 1rem;
+      }
+      .quick-facts {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+      }
+    }
+
+    /* Section Titles */
+    .section-title, .current-position-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      color: var(--text);
+      text-align: center;
+      padding-bottom: 0.75rem;
+      position: relative;
+    }
+    .section-title::after, .current-position-title::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -276,479 +252,730 @@
       height: 3px;
       background: var(--accent);
       border-radius: 2px;
-  }
+    }
 
-  /* Current Position Section */
-  .current-position-section {
-    max-width: 900px;
-    margin: 0 auto 2.2rem auto;
-    padding: 2.5rem 1.2rem 0 1.2rem;
-  }
-  .current-position-card {
-    display: flex;
-    align-items: flex-start;
-    background: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: var(--card-shadow);
-    padding: 1.25rem 1.6rem;
-    gap: 1.4rem;
-    margin-bottom: 2rem;
-    border-left: 5px solid var(--accent);
-  }
-  .current-position-logo {
-    width: 62px;
-    height: 62px;
-    object-fit: contain;
-    border-radius: 12px;
-    background: var(--surface);
-    border: 1px solid var(--border-color); /* Use variable */
-    margin-right: 1.2rem;
-    flex-shrink: 0;
-  }
-  .current-position-content {
-    flex: 1;
-    min-width: 0;
-  }
-  .current-position-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 1rem;
-    font-size: 1.21rem;
-    font-weight: bold;
-    margin-bottom: 0.25rem;
-  }
-  .current-position-role {
-    color: var(--accent);
-  }
-  .current-position-company {
-    color: var(--text);
-    font-weight: 700;
-  }
-  .current-position-contract {
-    color: var(--light-text);
-    font-size: 1.05rem;
-  }
-  .current-position-details {
-    font-size: 1rem;
-    color: var(--light-text);
-    margin-bottom: 0.2rem;
-    display: flex;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-  }
-  @media (max-width: 700px) {
-    .current-position-card {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.7rem;
-      padding: 1.2rem 1rem;
+    /* Experience & Education Sections */
+    .experience-section, .current-position-section {
+      max-width: 900px;
+      margin: 0 auto 2.8rem auto;
+      padding: 2.5rem 1.2rem 0 1.2rem;
     }
-    .current-position-logo {
-      margin-right: 0;
-      margin-bottom: 0.7rem;
-    }
-    .current-position-title {
-      font-size: 1.15rem;
-    }
-  }
-
-  /* Experience Section */
-  .experience-section {
-    max-width: 900px;
-    margin: 0 auto 2.8rem auto;
-    padding: 2.5rem 1.2rem 0 1.2rem;
-  }
-  .exp-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem; /* Reduced gap slightly */
-  }
-  .exp-card {
-    display: flex;
-    align-items: flex-start;
-    background: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: var(--card-shadow);
-    padding: 1.1rem 1.2rem;
-    gap: 1.2rem;
-    transition: box-shadow 0.2s, transform 0.2s;
-    cursor: default; /* Remove pointer cursor as it's not clickable */
-  }
-  .exp-card:hover {
-    box-shadow: 0 6px 20px 0 rgba(0,0,0,0.1); /* Enhanced hover shadow */
-    transform: translateY(-4px);
-  }
-  .exp-logo {
-    width: 54px;
-    height: 54px;
-    object-fit: contain;
-    border-radius: 10px;
-    background: var(--surface);
-    margin-right: 0.8rem;
-    flex-shrink: 0;
-    border: 1px solid var(--border-color); /* Use variable */
-    display: block;
-  }
-  .exp-content { flex: 1; min-width: 0; }
-  .exp-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.8rem;
-    font-size: 1.12rem;
-    font-weight: 700;
-    margin-bottom: 0.08rem;
-  }
-  .exp-role { color: var(--accent); }
-  .exp-company { color: var(--text); font-weight: 700; }
-  .exp-details {
-    font-size: 0.96rem;
-    color: var(--light-text);
-    margin-bottom: 0.35rem;
-    display: flex;
-    gap: 1.1rem;
-    flex-wrap: wrap;
-  }
-  .exp-bullets {
-    margin: 0.4rem 0 0 0;
-    padding-left: 1.07rem;
-    color: var(--text);
-    line-height: 1.6;
-    font-size: 0.99rem;
-  }
-  .exp-bullets li { margin-bottom: 0.18rem; }
-  @media (max-width: 700px) {
-    .exp-card {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.7rem;
-    }
-    .exp-logo {
-      margin-bottom: 0.5rem;
-      margin-right: 0;
-    }
-  }
-
-  /* Skills Section */
-  .skills-section {
-    max-width: 900px;
-    margin: 0 auto 2.8rem auto;
-    padding: 2.5rem 1.2rem 0 1.2rem;
-  }
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem; /* Reduced gap */
-  }
-  .skill-group {
-    background: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: var(--card-shadow);
-    padding: 1.2rem 1rem 1.2rem 1.1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .skill-group h4 {
-    margin-bottom: 1.1rem;
-    font-size: 1.07rem;
-    color: var(--accent);
-    font-weight: 700;
-    letter-spacing: 0.3px;
-  }
-  .skill-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-  }
-  .skill-pill {
-    background: var(--bg); /* Use light background for pills */
-    color: var(--text); /* Darker text */
-    font-weight: 500; /* Slightly lighter weight */
-    border-radius: 999px;
-    padding: 0.4em 1.2em;
-    font-size: 0.96rem;
-    margin-bottom: 0.1rem;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
-    cursor: default;
-    border: 1px solid var(--border-color);
-  }
-  .skill-pill:hover {
-    background: var(--accent);
-    color: var(--surface);
-    border-color: var(--accent);
-    transform: translateY(-2px);
-  }
-  @media (max-width: 700px) {
-    .skills-grid {
-      grid-template-columns: 1fr;
-      gap: 1.2rem;
-    }
-  }
-
-  /* Portfolio Section */
-  .portfolio-section {
-    max-width: 1100px;
-    margin: 0 auto 2.8rem auto;
-    padding: 2.5rem 1.2rem 0 1.2rem;
-  }
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-    gap: 2rem;
-  }
-  .portfolio-card {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    background: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: var(--card-shadow);
-    transition: box-shadow 0.2s, transform 0.2s;
-    overflow: hidden; /* Ensures child elements respect border-radius */
-  }
-  .portfolio-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  }
-  .portfolio-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Make link fill the card */
-  }
-  .portfolio-card .portfolio-content {
-      padding: 1.25rem;
+    .exp-cards {
       display: flex;
-      flex-direction: column;
-      flex-grow: 1; /* Allows content to fill space */
-  }
-  .portfolio-card h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.17rem;
-    color: var(--accent);
-  }
-  .portfolio-card p {
-    flex-grow: 1; /* Pushes links to the bottom */
-    color: var(--light-text);
-  }
-  .portfolio-card ul {
-    margin: 0.65rem 0 1rem 1.1rem;
-    padding: 0;
-    font-size: 0.99rem;
-    flex-grow: 1; /* Pushes links to the bottom */
-  }
-  .portfolio-links {
-    margin-top: auto; /* Pushes links to the bottom */
-  }
-  .portfolio-links a {
-    text-decoration: none;
-    color: var(--accent);
-    font-weight: 700;
-    margin-right: 1.1rem;
-    font-size: 0.98rem;
-    transition: color 0.16s;
-  }
-  .portfolio-links a:hover,
-  .portfolio-links a:focus {
-    color: var(--accent-light);
-    text-decoration: underline;
-    outline: none;
-  }
-
-  /* Services Section */
-  .services-section {
-    max-width: 750px;
-    margin: 0 auto 3.1rem auto;
-    padding: 2.5rem 1.2rem 0 1.2rem;
-  }
-  .services-card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: var(--card-shadow);
-    padding: 1.45rem 1.25rem;
-    font-size: 1.05rem; /* Slightly smaller for readability */
-    line-height: 1.7;
-    color: var(--text);
-  }
-  .services-card ul {
-    margin: 1.2rem 0 0.3rem 1.2rem;
-    padding: 0;
-  }
-
-  /* Contact Section */
-  .contact-section {
-    max-width: 800px;
-    margin: 0 auto 4rem auto;
-    padding: 2.5rem 1.2rem 0 1.2rem;
-  }
-  .contact-flex {
-    display: flex;
-    gap: 2.3rem;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-  .contact-info {
-    flex: 1.2;
-    min-width: 170px;
-    font-size: 1.09rem;
-    background: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: var(--card-shadow);
-    padding: 1.25rem 1.2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem; /* Increased gap */
-  }
-  .contact-info a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: text-decoration 0.16s;
-  }
-  .contact-info a:hover,
-  .contact-info a:focus {
-    text-decoration: underline;
-    outline: none;
-  }
-  @media (max-width: 900px) {
-    .portfolio-grid { grid-template-columns: 1fr; }
-    .contact-flex {
       flex-direction: column;
       gap: 1.5rem;
     }
-  }
+    .exp-card, .current-position-card {
+      display: flex;
+      align-items: flex-start;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 1.25rem 1.6rem;
+      gap: 1.4rem;
+      border-left: 5px solid var(--accent);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .exp-card:hover, .current-position-card:hover {
+      box-shadow: 0 6px 20px 0 rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+    }
+    .exp-logo, .current-position-logo {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border-color);
+      margin-right: 1.2rem;
+      flex-shrink: 0;
+    }
+    .exp-content, .current-position-content { flex: 1; min-width: 0; }
+    .exp-header, .current-position-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.8rem;
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .exp-role, .current-position-role { color: var(--accent); }
+    .exp-company, .current-position-company { color: var(--text); font-weight: 700; }
+    .current-position-contract { color: var(--light-text); font-size: 1.05rem; }
+    .exp-details, .current-position-details {
+      font-size: 0.96rem;
+      color: var(--light-text);
+      margin-bottom: 0.35rem;
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+    }
+    .exp-bullets {
+      margin: 0.4rem 0 0 0;
+      padding-left: 1.07rem;
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 0.99rem;
+    }
+    .exp-bullets li { margin-bottom: 0.25rem; }
+    @media (max-width: 700px) {
+      .exp-card, .current-position-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
+      }
+      .exp-logo, .current-position-logo {
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+      }
+    }
 
-  /* Fade-in animation */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px); /* Reduced distance */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* Back to Top Button */
-  #backToTop {
-    display: none;
-    position: fixed;
-    bottom: 2rem;
-    right: 1.5rem;
-    z-index: 1000;
-    font-size: 1.4rem;
-    background-color: var(--accent);
-    color: var(--surface);
-    border: none;
-    padding: 0.6em 0.9em;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-  #backToTop:hover,
-  #backToTop:focus {
-    background-color: var(--accent-light);
-    transform: scale(1.1);
-    outline: none;
-  }
-
-  /* Hamburger styles */
-  .hamburger {
-    display: none;
-    font-size: 1.8rem;
-    background: none;
-    border: none;
-    color: var(--text);
-    cursor: pointer;
-  }
-  @media (max-width: 768px) {
-    nav { flex-wrap: wrap; }
-    .hamburger { display: block; }
-    .nav-links {
-      display: none;
+    /* Skills Section */
+    .skills-section {
+      max-width: 900px;
+      margin: 0 auto 2.8rem auto;
+      padding: 2.5rem 1.2rem 0 1.2rem;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-group {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 1.5rem;
+      display: flex;
       flex-direction: column;
-      width: 100%;
+      align-items: flex-start;
+    }
+    .skill-group h4 {
+      margin-top: 0;
+      margin-bottom: 1.1rem;
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .skill-pill {
+      background: var(--bg);
+      color: var(--text);
+      font-weight: 500;
+      border-radius: 999px;
+      padding: 0.4em 1.2em;
+      font-size: 0.96rem;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Portfolio Section */
+    .portfolio-section {
+      max-width: 1200px;
+      margin: 0 auto 2.8rem auto;
+      padding: 2.5rem 1.2rem 0 1.2rem;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+    .portfolio-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.2s, transform 0.2s;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    .portfolio-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .portfolio-card img {
+        width: 100%;
+        border-radius: 0;
+        margin-bottom: 0;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+    .portfolio-content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    .portfolio-content h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+    .portfolio-content p, .portfolio-content ul {
+      color: var(--light-text);
+      flex-grow: 1;
+      font-size: 0.98rem;
+    }
+    .portfolio-content ul {
+      margin: 0.65rem 0 1.5rem 1.1rem;
+      padding: 0;
+    }
+    .portfolio-links {
+      margin-top: auto;
+    }
+    .portfolio-links a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 700;
+      margin-right: 1.1rem;
+      font-size: 0.98rem;
+      transition: color 0.16s;
+    }
+    .portfolio-links a:hover,
+    .portfolio-links a:focus {
+      color: var(--accent-light);
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Services Section */
+    .services-section {
+      max-width: 750px;
+      margin: 0 auto 3.1rem auto;
+      padding: 2.5rem 1.2rem 0 1.2rem;
+    }
+    .services-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 2rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+    .services-card ul {
+      margin: 1.2rem 0 0.3rem 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      max-width: 800px;
+      margin: 0 auto 4rem auto;
+      padding: 2.5rem 1.2rem 0 1.2rem;
+    }
+    .contact-info {
+      font-size: 1.1rem;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: text-decoration 0.16s;
+    }
+    .contact-info a:hover,
+    .contact-info a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    @media (max-width: 900px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Back to Top Button */
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      z-index: 1000;
+      font-size: 1.4rem;
+      background-color: var(--accent);
+      color: var(--surface);
+      border: none;
+      padding: 0.6em 0.9em;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    #backToTop:hover,
+    #backToTop:focus {
+      background-color: var(--accent-light);
+      transform: scale(1.1);
+      outline: none;
+    }
+
+    /* Hamburger styles */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      nav { flex-wrap: wrap; }
+      .hamburger { display: block; }
+      nav ul { gap: 0; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--surface);
+        margin-top: 0.7rem;
+        padding-bottom: 1rem;
+        border-top: 1px solid var(--border-color);
+      }
+      .nav-links.show { display: flex; }
+      .nav-links li {
+        padding: 0.8rem 1rem;
+        text-align: left;
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+
+    /* Footer */
+    footer.site-footer {
+      text-align: center;
+      padding: 25px 10px;
       background-color: var(--surface);
-      margin-top: 0.7rem;
-      padding-bottom: 1rem;
+      color: var(--light-text);
+      font-size: 0.9rem;
+      margin-top: 60px;
       border-top: 1px solid var(--border-color);
     }
-    .nav-links.show { display: flex; }
-    .nav-links li {
-      padding: 0.8rem 1rem;
-      text-align: left;
+    footer.site-footer .social-links a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 700;
+      transition: text-decoration 0.16s;
     }
-  }
+    footer.site-footer .social-links a:hover,
+    footer.site-footer .social-links a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Fade-in on scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document.querySelectorAll(".fade-in").forEach((section) => {
+        observer.observe(section);
+      });
 
-  /* Modal Styles - Adjusted for new theme */
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(33, 37, 41, 0.7); /* Dark overlay */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1001;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  .modal-overlay.visible {
-    visibility: visible;
-    opacity: 1;
-  }
-  .modal-container {
-    background-color: var(--surface);
-    padding: 20px;
-    border-radius: var(--radius);
-    max-width: 800px;
-    width: 90%;
-    position: relative;
-    max-height: 90vh;
-    overflow-y: auto; /* Allow scrolling if content is long */
-    box-shadow: var(--card-shadow);
-    transform: scale(0.95);
-    transition: transform 0.3s ease;
-  }
-   .modal-overlay.visible .modal-container {
-      transform: scale(1);
-  }
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.8rem;
-    font-weight: bold;
-    cursor: pointer;
-    color: var(--light-text);
-  }
+      // Smooth scrolling
+      document.querySelectorAll('nav a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
 
-  /* Footer */
-  footer.site-footer {
-    text-align: center;
-    padding: 25px 10px;
-    background-color: var(--surface); /* Changed to white */
-    color: var(--light-text);
-    font-size: 0.9rem;
-    margin-top: 60px;
-    border-top: 1px solid var(--border-color);
-  }
-  footer.site-footer .social-links a {
-    color: var(--accent);
-    text-decoration: none;
-    margin: 0 8px;
-    font-weight: 700;
-    transition: text-decoration 0.16s;
-  }
-  footer.site-footer .social-links a:hover,
-  footer.site-footer .social-links a:focus {
-    text-decoration: underline;
-    outline: none;
-  }
-</style>
+      // Hamburger toggle
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("navLinks");
+      if (hamburger && navLinks) {
+        hamburger.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+        });
+      }
+
+      // Close menu on nav link click (for mobile)
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (navLinks.classList.contains("show")) {
+            navLinks.classList.remove("show");
+          }
+        });
+      });
+
+      // Back to top button
+      const backToTopBtn = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.style.display = "block";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      });
+      backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
+</head>
+<body>
+  <nav>
+    <div class="brand">Mikhail Tabong</div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero fade-in" id="home">
+    <img src="profile.png" alt="Kyle Tabong profile photo" class="portrait" loading="lazy" />
+    <h1>Mikhail “Kyle” Tabong</h1>
+    <div class="tagline">
+      Aspiring Data Analyst & Information Science Senior – Driven by Analytics, Collaboration, and Results.
+    </div>
+    <h2>
+      Information Science major at UMD, specializing in data analytics, visualization, and delivering actionable insights for business and healthcare.
+    </h2>
+    <div class="cta-buttons">
+      <a href="#portfolio">View Portfolio</a>
+      <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="outline">Download Resume</a>
+      <a href="#contact" class="outline">Contact</a>
+    </div>
+  </section>
+
+  <section class="about-section fade-in" id="about">
+    <div class="about-main">
+      <h3>About Me</h3>
+      <p>
+        Hi, my name is Mikhail Tabong (pronounced /mɪˈkaɪl tæˈbɔŋ/ — “me-KYLE tah-BONG”), but most of my peers call me Kyle for short. I am a rising senior at the University of Maryland, majoring in Information Science with a concentration in Data Science. Alongside my studies, I currently work as an AML/CTF Analyst for TD Bank through a contract with Protiviti, where I apply analytical skills to support financial crime detection and regulatory compliance.
+      </p>
+      <p>With strong expertise in data analytics, SQL, Python, and statistical modeling, I excel at turning complex datasets into actionable insights. I am known for exceeding expectations and delivering high-quality work in collaborative team settings that value efficiency and clear communication.
+      </p>
+      <p>I am passionate about leveraging data to drive impactful decision-making and am eager to advance my career as a Data Analyst, particularly within the finance or healthcare sectors. My goal is to contribute to organizations by optimizing operations and improving outcomes through data-driven strategies.
+      </p>
+    </div>
+    <aside class="quick-facts">
+      <h4>Quick Facts</h4>
+      <dl>
+        <div class="fact-group"><dt>Location:</dt><dd>Annapolis, MD</dd></div>
+        <div class="fact-group"><dt>Graduation:</dt><dd>May 2026</dd></div>
+        <div class="fact-group"><dt>Leadership:</dt><dd>Phi Delta Sigma, Inc. (Fundraising Chair & Warden)</dd></div>
+        <div class="fact-group"><dt>Focus:</dt><dd>Data Science, Analytics, Visualization</dd></div>
+        <div class="fact-group"><dt>Skills:</dt><dd>Collaboration, problem-solving, attention to detail</dd></div>
+        <div class="fact-group"><dt>Certifications:</dt><dd>
+          <a href="https://coursera.org/verify/professional-cert/X58QUDR2TQC2" target="_blank" rel="noopener noreferrer" class="cert-link">
+            Google Data Analytics Professional Certificate
+          </a>
+        </dd></div>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="experience-section fade-in" id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="exp-cards">
+      <div class="exp-card">
+        <img src="umd-logo.png" alt="University of Maryland logo" class="exp-logo" />
+        <div class="exp-content">
+          <div class="exp-header">
+            <span class="exp-role">B.Sci in Information Science</span>
+            <span>–</span>
+            <span class="exp-company">University of Maryland, College Park</span>
+          </div>
+          <div class="exp-details">
+            <span class="exp-location">College Park, MD</span>
+            <span class="exp-dates">Expected May 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <img src="aacc-logo.png" alt="Anne Arundel Community College logo" class="exp-logo" />
+        <div class="exp-content">
+          <div class="exp-header">
+            <span class="exp-role">General Education</span>
+            <span>–</span>
+            <span class="exp-company">Anne Arundel Community College</span>
+          </div>
+          <div class="exp-details">
+            <span class="exp-location">Arnold, MD</span>
+            <span class="exp-dates">2022 – 2023</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="current-position-section fade-in" id="current-position">
+    <h2 class="current-position-title">Current Position</h2>
+    <div class="current-position-card">
+      <img src="tdbank-logo.png" alt="TD Bank logo" class="current-position-logo" />
+      <div class="current-position-content">
+        <div class="current-position-header">
+          <span class="current-position-role">Financial Crime Analyst</span>
+          <span>–</span>
+          <span class="current-position-company">TD Bank</span>
+          <span class="current-position-contract">(Contract via Protiviti)</span>
+        </div>
+        <div class="current-position-details">
+          <span>Washington, DC</span>
+          <span>Start: June 2025</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section fade-in" id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="exp-cards">
+      <div class="exp-card">
+        <img src="ambulero-logo.png" alt="Ambulero logo" class="exp-logo" />
+        <div class="exp-content">
+          <div class="exp-header">
+            <span class="exp-role">Data Analyst Intern</span>
+            <span>–</span>
+            <span class="exp-company">Ambulero, Inc.</span>
+          </div>
+          <div class="exp-details">
+            <span class="exp-location">Miami, FL (Remote)</span>
+            <span class="exp-dates">Dec 2024 – Apr 2025</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Streamlined test-data workflows using Python, improving pipeline efficiency by 30%.</li>
+            <li>Normalized XML test data into SQL schema for time-series analysis on 10K+ records.</li>
+            <li>Built interactive Tableau dashboards for QA KPIs across 5 product lines; reduced error resolution time by 15%.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-card">
+        <img src="chosan-logo.png" alt="Chosan logo" class="exp-logo" />
+        <div class="exp-content">
+          <div class="exp-header">
+            <span class="exp-role">Data Analyst Intern</span>
+            <span>–</span>
+            <span class="exp-company">Chosan</span>
+          </div>
+          <div class="exp-details">
+            <span class="exp-location">Los Angeles, CA (Remote)</span>
+            <span class="exp-dates">Oct 2024 – Dec 2024</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Audited and optimized contractor inventory database using SQL (reduced discrepancies by 15%).</li>
+            <li>Developed Python ETL pipelines, automated data quality checks, and stakeholder reporting (saved 10+ hours/month).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-card">
+        <img src="pdsigma-logo.png" alt="Phi Delta Sigma logo" class="exp-logo" />
+        <div class="exp-content">
+          <div class="exp-header">
+            <span class="exp-role">Fundraising Chair & Warden</span>
+            <span>–</span>
+            <span class="exp-company">Phi Delta Sigma, Inc.</span>
+          </div>
+          <div class="exp-details">
+            <span class="exp-location">University of Maryland</span>
+            <span class="exp-dates">2023 – Present</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Led fundraising campaigns, raising over $6,000 for local and national causes.</li>
+            <li>Coordinated service events and managed chapter operations, boosting engagement and retention.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills-section fade-in" id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>Programming & Analysis</h4>
+        <div class="skill-list">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">R</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">pandas</span>
+          <span class="skill-pill">NumPy</span>
+          <span class="skill-pill">scikit-learn</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Data Visualization</h4>
+        <div class="skill-list">
+          <span class="skill-pill">Tableau</span>
+          <span class="skill-pill">Excel</span>
+          <span class="skill-pill">Matplotlib</span>
+          <span class="skill-pill">Seaborn</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Databases & ETL</h4>
+        <div class="skill-list">
+          <span class="skill-pill">MySQL</span>
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">Data Cleaning</span>
+          <span class="skill-pill">ETL Pipelines</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Machine Learning</h4>
+        <div class="skill-list">
+          <span class="skill-pill">Classification</span>
+          <span class="skill-pill">Regression</span>
+          <span class="skill-pill">Clustering</span>
+          <span class="skill-pill">Bias Mitigation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-section fade-in" id="portfolio">
+    <h2 class="section-title">Portfolio / Projects</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <a href="projects/diabetes-data-warehouse.html" class="portfolio-card-link" aria-label="View Diabetes Data Warehouse Report project">
+          <img src="blood_glucose_monitor.png" alt="Diabetes Data Monitoring" loading="lazy" />
+          <div class="portfolio-content">
+            <h3>Diabetes Data Warehouse Report</h3>
+            <p>Designed and implemented a research-ready SQL data warehouse with over 70K+ patient records and a focus on DEI and privacy.</p>
+            <div class="portfolio-links">
+              <a href="https://github.com/ReservedbyDev/414Final" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://docs.google.com/document/d/1QBsg9b6iYg75UVbAEZNcIoZw9iWH9GyGdgjn27ZhO78/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Project Document</a>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="portfolio-card">
+        <a href="projects/hepatitis-mortality-prediction.html" class="portfolio-card-link" aria-label="View Hepatitis Mortality Prediction project">
+          <img src="hepatitis_liver.png" alt="Illustration of a liver for Hepatitis study" loading="lazy" />
+          <div class="portfolio-content">
+            <h3>Hepatitis Education: Mortality Prediction Using ML</h3>
+            <p>Built clinical ML models (Decision Tree, SVM, KNN) to predict hepatitis mortality, prioritizing ethical AI and fairness across demographics.</p>
+            <div class="portfolio-links">
+              <a href="https://github.com/iamsamuelm/healthcare-data-analytics" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://docs.google.com/presentation/d/1RMhShOQ0fRifDf3GJQxsEKP08El1Aenu/edit?usp=sharing&ouid=115060521417647917362&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">Presentation</a>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="portfolio-card">
+        <a href="projects/ecommerce-product-similarity.html" class="portfolio-card-link" aria-label="View E-Commerce Product Similarity project">
+          <img src="ecommerce_concept.png" alt="Abstract e-commerce concept graphic" loading="lazy" />
+          <div class="portfolio-content">
+            <h3>Mapping Product Similarity in E-Commerce</h3>
+            <p>Developed an ML pipeline to visualize product similarities, supporting recommendation, pricing, and bundling strategies using t-SNE and clustering.</p>
+            <div class="portfolio-links">
+              <a href="https://github.com/mikhail-tabong/ecommerce-product-performace-analysis" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://medium.com/@mtabong/mapping-product-similarity-in-e-commerce-a-data-driven-approach-to-identifying-competitors-and-263d93e964fb" target="_blank" rel="noopener noreferrer">Medium Article</a>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="portfolio-card">
+        <a href="projects/superstore-sales-dashboard.html" class="portfolio-card-link" aria-label="View Superstore Sales Dashboard project">
+          <img src="superstore_sales_dashboard.png" alt="Screenshot of a sales dashboard" loading="lazy" />
+          <div class="portfolio-content">
+            <h3>Superstore Sales Dashboard</h3>
+            <p>Developed an interactive Tableau dashboard to analyze Superstore sales data and visualize key performance metrics, enabling dynamic filtering for decision support.</p>
+            <div class="portfolio-links">
+              <a href="https://public.tableau.com/app/profile/mikhail.tabong/viz/SuperstoreSalesDashboard_17461064261590/ExecutiveOverview" target="_blank" rel="noopener noreferrer">Dashboard Link</a>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="portfolio-card">
+        <a href="projects/nba-three-point-strategy.html" class="portfolio-card-link" aria-label="View NBA Three-Point Shot Strategy project">
+          <img src="nba_logo.png" alt="NBA Logo" loading="lazy" />
+          <div class="portfolio-content">
+            <h3>Arc Advantage: NBA Three-Point Shot Strategy</h3>
+            <p>Analyzed NBA trends using regression and historical data to uncover the evolution and impact of the three-point shot on offensive strategy.</p>
+            <div class="portfolio-links">
+              <a href="https://medium.com/inst414-data-science-tech/arc-advantage-unpacking-the-strategic-edge-of-the-three-point-shot-ff5e42a09415" target="_blank" rel="noopener noreferrer">Medium Article</a>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section fade-in" id="services">
+    <h2 class="section-title">What I Offer</h2>
+    <div class="services-card">
+      <p>
+        I offer analytical solutions for data-driven decision making—data analysis, visualization, dashboard development, and ETL pipelines for organizations in finance, healthcare, and beyond. My focus is always on actionable insight, quality, and collaboration.
+      </p>
+      <ul>
+        <li>Data Analysis & Reporting</li>
+        <li>Interactive Dashboard Creation</li>
+        <li>Database Design & Automation</li>
+        <li>Machine Learning Model Evaluation</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact-section fade-in" id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-info">
+      <div><b>Phone:</b> <a href="tel:8083882725">(808) 388-2725</a></div>
+      <div><b>Email:</b> <a href="mailto:mikhailtabong@gmail.com">mikhailtabong@gmail.com</a></div>
+      <div><b>LinkedIn:</b> <a href="https://linkedin.com/in/mikhail-tabong" target="_blank" rel="noopener noreferrer">linkedin.com/in/mikhail-tabong</a></div>
+      <div><b>GitHub:</b> <a href="https://github.com/mikhail-tabong" target="_blank" rel="noopener noreferrer">github.com/mikhail-tabong</a></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>© 2025 Mikhail Tabong. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://linkedin.com/in/mikhail-tabong" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+      <a href="https://github.com/mikhail-tabong" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+    </div>
+  </footer>
+
+  <button id="backToTop" title="Go to top">↑</button>
+
+</body>
+</html>
