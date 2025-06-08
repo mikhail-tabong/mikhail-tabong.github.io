@@ -4,114 +4,137 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>So You Wanna Learn Data Analytics? | Mikhail Tabong</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg: #1A1A1A;
+      --surface: #2C2C2C;
+      --text: #FFFFFF;
+      --light-text: #9C9A9B;
+      --accent: #E21833;
+      --accent-light: #F05566;
+      --accent-secondary: #FFD520;
+      --white: #f8f9fa;
+      --card-shadow: none;
+      --radius: 12px;
+      --border-color: #444444;
+    }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
+      font-family: 'Lato', Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
       margin: 0;
-      padding: 20px;
-      background-color: #f9f9f9;
-      color: #333;
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin-inline: auto;
     }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    header, footer {
+      text-align: center;
+      margin-bottom: 2rem;
     }
-    h1 {<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>So You Wanna Learn Data Analytics? | Mikhail Tabong</title>
-  <style>
-    body {
-      display: grid;
-      grid-template-areas:
-        "header header"
-        "sidebar content"
-        "footer footer";
-      grid-template-columns: 200px 1fr;
-      grid-template-rows: auto 1fr auto;
-      gap: 20px;
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-      background-color: #f9f9f9;
-      color: #333;
-      font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
+    header h1 a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
     }
-    header {
-      grid-area: header;
-    }
-    aside {
-      grid-area: sidebar;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    header h1 a:hover {
+      color: var(--accent-light);
     }
     main {
-      grid-area: content;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      background: var(--surface);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      margin-bottom: 3rem;
     }
-    footer {
-      grid-area: footer;
-      text-align: center;
-      padding: 10px;
-      font-size: 0.9em;
-      color: #888;
-    }
-    h1 {
-      color: #222;
-      font-size: 2.2em;
-      margin-bottom: 10px;
+    h1, h2 {
+      color: var(--accent);
     }
     .date {
-      color: #888;
-      font-size: 0.9em;
-      margin-bottom: 30px;
+      font-size: 0.9rem;
+      color: var(--light-text);
+      margin-bottom: 1.5rem;
     }
-    a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
+    p, li {
+      line-height: 1.7;
     }
     ul {
-      padding-left: 20px;
+      padding-left: 1.5rem;
     }
-    @media (max-width: 768px) {
-      body {
-        grid-template-areas:
-          "header"
-          "content"
-          "sidebar"
-          "footer";
-        grid-template-columns: 1fr;
-      }
+    a {
+      color: var(--accent-secondary);
+    }
+    a:hover {
+      color: var(--accent-light);
+    }
+    footer {
+      color: var(--light-text);
+      font-size: 0.9rem;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    nav a {
+      color: var(--accent-secondary);
+      text-decoration: none;
+      margin-right: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav a:hover {
+      color: var(--accent-light);
     }
   </style>
 </head>
 <body>
   <header>
-    <h1><a href="../index.html">Mikhail Tabong</a></h1>
+    <h1><a href="/">Mikhail Tabong</a></h1>
   </header>
 
-  <aside>
-    <h2>About Me</h2>
-    <p>Data enthusiast sharing my journey into analytics, one post at a time.</p>
-  </aside>
+  <nav>
+    <a href="#post2">📍 My Roadmap</a>
+    <a href="#post1">🧠 Getting Started</a>
+  </nav>
 
-  <main>
+  <main id="post2">
+    <h1>📍 My Data Analytics Roadmap</h1>
+    <div class="date">May 29, 2025 • 6 min read</div>
+
+    <p>Before I started seriously building projects and applying for internships, I spent around 6–8 months diving deep into the fundamentals of data analytics. It wasn’t a fast process, but it was a rewarding one—and the time I invested upfront paid off later when I was working on real-world problems in class and during internships.</p>
+
+    <p>I kicked things off with the <a href="https://www.coursera.org/professional-certificates/google-data-analytics" target="_blank" rel="noopener noreferrer">Google Data Analytics Certificate</a>. It was a structured, beginner-friendly way to understand what analytics is all about. Through that, I learned the basics of data cleaning, visualization, and interpreting results through tools like SQL, R, and spreadsheets.</p>
+
+    <p>From there, I started building projects—most of them tied to my coursework or ideas I was curious about. Each project gave me more confidence with Python and tools like Tableau, and helped me practice working with real datasets.</p>
+
+    <p>I also explored other data tracks along the way: I dabbled in <strong>data engineering</strong> to understand pipelines and infrastructure, and <strong>data science</strong> to learn about predictive modeling and more advanced analysis techniques.</p>
+
+    <div style="margin: 2rem 0;">
+      <h2>🗺️ My 6–8 Month Learning Timeline</h2>
+      <ul style="list-style-type: none; padding: 0;">
+        <li><strong>Month 1–2:</strong> Google Data Analytics Certificate (Coursera)</li>
+        <li><strong>Month 3:</strong> Started building small projects from school assignments</li>
+        <li><strong>Month 4:</strong> Learned SQL, Tableau, Python basics</li>
+        <li><strong>Month 5:</strong> Completed first full project with dashboard and write-up</li>
+        <li><strong>Month 6:</strong> Explored machine learning basics and started a classification project</li>
+        <li><strong>Month 7–8:</strong> Continued improving GitHub portfolio, blogging, and networking</li>
+      </ul>
+    </div>
+
+    <p>One thing that helped me stay on track was building a study routine. I treated learning analytics like a part-time job—setting aside evenings or weekend hours to go through lessons, build out small projects, and revise what I learned. Having that structure made a huge difference and helped me avoid burnout.</p>
+
+    <p>While working on school-related projects, I also began exploring how analytics ties into broader business goals. I started asking questions like: What kind of problems do companies use data to solve? How do data analysts collaborate with product or marketing teams? This helped me understand the bigger picture, not just the technical skills.</p>
+
+    <p>Eventually, I began contributing to group projects where I wasn’t just writing code or cleaning data—I was also responsible for presenting findings, building dashboards, and making recommendations. That’s when things really started to click. Analytics isn’t just about data. It’s about communication. If you can clearly explain what the data says and why it matters, you're already ahead.</p>
+
+    <p>If you're just starting out, I’d also suggest learning some basic statistics. Concepts like correlation, mean/median, p-values, and distributions are incredibly useful when interpreting data. You don’t need a full stats degree, but having a working knowledge will give you more confidence when you analyze or explain trends.</p>
+
+    <p><strong>Tip:</strong> Machine learning projects are becoming more important even for entry-level analytics roles. While you don’t need to be a full data scientist, having a couple of projects that include classification or regression modeling can set you apart. Employers want to see that you understand both how to interpret results and how to build models responsibly.</p>
+
+    <p>Lastly, document everything. Keep a learning journal, a GitHub repo, a blog—something that shows your progress. It helps you retain knowledge and gives others something to see if they want to understand what you’re about.</p>
+  </main>
+
+  <main id="post1">
     <h1>🧠 So You Wanna Learn Data Analytics? Here's Where to Start (No Gatekeeping)</h1>
     <div class="date">June 8, 2025 • 7 min read</div>
 
@@ -162,83 +185,5 @@
   <footer>
     <p>© 2025 Mikhail Tabong</p>
   </footer>
-</body>
-</html>
-
-      color: #222;
-      font-size: 2.2em;
-      margin-bottom: 10px;
-    }
-    .date {
-      color: #888;
-      font-size: 0.9em;
-      margin-bottom: 30px;
-    }
-    a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .back-link {
-      margin-top: 40px;
-      display: block;
-    }
-    ul {
-      padding-left: 20px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>🧠 So You Wanna Learn Data Analytics? Here's Where to Start (No Gatekeeping)</h1>
-    <div class="date">June 8, 2025 • 7 min read</div>
-
-    <p>If you're reading this, chances are you've heard the buzz around data analytics and are wondering how to get started. Maybe you're a student trying to choose a career path, someone switching fields, or just data-curious. Whatever your background, the good news is: it's never too late, and you don't need a computer science degree to break in. You just need direction, consistency, and a plan.</p>
-
-    <h2>📍 Step 1: Understand What Data Analytics Really Is</h2>
-    <p>Data analytics is about turning information into insight. At its core, you're collecting, cleaning, analyzing, and visualizing data to solve real-world problems or uncover patterns. Think of it as storytelling, but with charts and numbers.</p>
-    <p>You may have heard terms like data science, business intelligence, or machine learning. While related, data analytics usually focuses more on descriptive and diagnostic analysis—"What happened?" and "Why did it happen?"—rather than prediction or automation. This makes it a perfect entry point.</p>
-
-    <h2>💻 Step 2: Learn the Tools That Matter</h2>
-    <p>It’s easy to get overwhelmed by tech jargon, but here’s a simple stack that’ll cover 90% of what you’ll need in your first job:</p>
-    <ul>
-      <li><strong>SQL</strong> – Used in almost every analyst role to retrieve and manipulate data from databases.</li>
-      <li><strong>Excel/Google Sheets</strong> – Not glamorous, but still powerful for quick calculations and data wrangling.</li>
-      <li><strong>Python</strong> – Popular for automation, cleaning large datasets, and more complex analysis.</li>
-      <li><strong>Tableau or Power BI</strong> – Tools to create interactive dashboards and compelling data visuals.</li>
-    </ul>
-    <p>Start with one tool at a time. Master the basics of SQL and Excel first. Once you're comfortable, expand into Python and visualization platforms.</p>
-
-    <h2>🔬 Step 3: Get Hands-On with Projects</h2>
-    <p>The best way to learn is by doing. Reading tutorials can only get you so far—you need to apply what you’re learning in real scenarios. Start with public datasets from places like Kaggle, Google Dataset Search, or Data.gov. Try answering a question you're genuinely curious about. For example:</p>
-    <ul>
-      <li>How do COVID-19 vaccination rates correlate with case counts?</li>
-      <li>Which Netflix genres are most popular across different countries?</li>
-      <li>Can you clean and visualize your bank statement to find spending patterns?</li>
-    </ul>
-    <p>Build these into small portfolio projects and document them well. Write a few sentences on your goals, what you found, and how you did it. This shows future employers that you not only know the tools, but you know how to think critically with data.</p>
-
-    <h2>💬 Step 4: Build In Public and Network</h2>
-    <p>One of the best ways to grow fast is by sharing your learning journey. Post on LinkedIn, create a GitHub portfolio, or start a blog like this one. You don’t need to be an expert—just be open about what you're exploring.</p>
-    <p>Also, don’t underestimate the power of networking. Engage with people in the field, ask questions, attend virtual meetups, and join data communities on Discord or Twitter. The data world is big, but welcoming.</p>
-
-    <h2>📅 Step 5: Be Consistent and Realistic</h2>
-    <p>You don’t need to learn everything in one month. Set a learning schedule—maybe 1 hour a day, or 6 hours a week. Consistency beats cramming. Build momentum, stay curious, and don’t be afraid to Google things (we all do).</p>
-    <p>Expect to feel confused sometimes. That’s normal. But every skill you learn builds on the last one. Celebrate small wins, whether that’s writing your first SQL query or building your first chart.</p>
-
-    <h2>🔍 Resources Worth Your Time</h2>
-    <ul>
-      <li><a href="https://www.kaggle.com/learn">Kaggle Learn</a> – Free mini-courses on Python, SQL, and machine learning.</li>
-      <li><a href="https://www.coursera.org/professional-certificates/google-data-analytics">Google Data Analytics Certificate</a></li>
-      <li><a href="https://mode.com/sql-tutorial/">SQL Tutorial by Mode Analytics</a></li>
-      <li><a href="https://www.freecodecamp.org/learn/">freeCodeCamp</a> – Great for Python and general data topics.</li>
-    </ul>
-
-    <p>That’s the roadmap. No fluff, no gatekeeping. In future posts, I’ll cover how to build your portfolio, what to put on your resume, and how to stand out when applying for roles. For now, start where you are, use what you have, and just begin.</p>
-
-    <a class="back-link" href="../index.html">← Back to Blog</a>
-  </div>
 </body>
 </html>
