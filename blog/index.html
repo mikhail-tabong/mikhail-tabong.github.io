@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>So You Wanna Learn Data Analytics? | Mikhail Tabong</title>
+  <title>Data Analytics Blog | Mikhail Tabong</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -40,7 +40,34 @@
     header h1 a:hover {
       color: var(--accent-light);
     }
-    main {
+    /* Quick Links Nav */
+    nav.quick-links {
+      margin-bottom: 2.5rem;
+      text-align: center;
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1rem 0.5rem;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      border: 1px solid var(--border-color);
+    }
+    nav.quick-links a {
+      color: var(--accent-secondary);
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.7em;
+      padding: 0.4em 0.7em;
+      border-radius: 7px;
+      transition: background 0.2s, color 0.2s;
+      font-size: 1.02em;
+      display: inline-block;
+    }
+    nav.quick-links a:hover, nav.quick-links a:focus {
+      background: var(--accent-light);
+      color: #fff;
+      text-decoration: underline;
+      outline: none;
+    }
+    article {
       background: var(--surface);
       padding: 2rem;
       border-radius: var(--radius);
@@ -71,19 +98,14 @@
       color: var(--light-text);
       font-size: 0.9rem;
     }
-    nav {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    nav a {
-      color: var(--accent-secondary);
-      text-decoration: none;
-      margin-right: 1rem;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    nav a:hover {
-      color: var(--accent-light);
+    @media (max-width: 650px) {
+      nav.quick-links {
+        padding: 0.7rem 0.2rem;
+        font-size: 0.95em;
+      }
+      article {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
@@ -92,95 +114,271 @@
     <h1><a href="/">Mikhail Tabong</a></h1>
   </header>
 
-  <nav>
-    <a href="#post2">📍 My Roadmap</a>
-    <a href="#post1">🧠 Getting Started</a>
+  <nav class="quick-links">
+    <a href="#linkedin">LinkedIn Tips</a>
+    <a href="#sql">SQL Skills</a>
+    <a href="#portfolio">Portfolio Guide</a>
+    <a href="#ml">Machine Learning</a>
+    <a href="#roadmap">My Roadmap</a>
+    <a href="#start">Getting Started</a>
   </nav>
 
-  <main id="post2">
+  <!-- POST 1 -->
+  <article id="linkedin">
+    <h1>🧑‍💻 Optimizing Your LinkedIn for Data Analytics Jobs</h1>
+    <div class="date">April 28, 2025 • 10 min read</div>
+    <p>LinkedIn isn’t just for recruiters—it’s your public portfolio, networking hub, and often your first impression in the data analytics world. When I started out, I had no idea how much a strong LinkedIn profile could impact callbacks, referrals, and connections. Let’s break down exactly how to turn your profile into a job magnet, even if you’re still a student or transitioning careers.</p>
+    <h2>Step 1: Start with a Clean, Relevant Headline</h2>
+    <ul>
+      <li>Use a headline that matches your target job, e.g., <strong>“Aspiring Data Analyst | SQL, Python, Tableau | UMD ‘26”</strong>.</li>
+      <li>Avoid generic phrases like “Student at University of Maryland”—employers want to see your focus.</li>
+      <li>Include 2-3 key skills and your intended role.</li>
+    </ul>
+    <h2>Step 2: Use a Friendly, Professional Photo & Banner</h2>
+    <ul>
+      <li>Profile photo: Clean background, good lighting, business casual if possible.</li>
+      <li>Banner: Use something data-related (graphs, code, dashboard screenshot) or your school colors.</li>
+      <li>Bonus: Create a free Canva banner with your name and a simple tagline.</li>
+    </ul>
+    <h2>Step 3: Write a Story-Driven About Section</h2>
+    <p>Talk about your journey—what drew you to analytics, what problems you want to solve, and what you’re currently learning. Example:</p>
+    <blockquote>
+      “Hi, I’m Kyle—a data analytics enthusiast passionate about using numbers to uncover insights that make an impact. I’m currently a senior at UMD, working with SQL and Python to turn raw data into real-world solutions. When I’m not building dashboards, I’m learning more about machine learning and sharing what I learn on my blog.”
+    </blockquote>
+    <ul>
+      <li>End with a call to action: “Let’s connect!” or “Open to internships/collaboration.”</li>
+    </ul>
+    <h2>Step 4: Fill Out Experience with Action Verbs</h2>
+    <ul>
+      <li>List internships, part-time jobs, group projects, and even coursework if you’re early in your journey.</li>
+      <li>Start bullets with words like <strong>“Analyzed,” “Built,” “Visualized,” “Automated”</strong>.</li>
+      <li>Include technologies used (<strong>SQL, Tableau, Python</strong>) and outcomes (“Improved reporting speed by 30%”).</li>
+    </ul>
+    <h2>Step 5: Showcase Projects and Certifications</h2>
+    <ul>
+      <li>Add 2-3 strong portfolio projects (school, personal, hackathon, freelance, etc.).</li>
+      <li>Attach links/screenshots (GitHub, Tableau, Medium posts).</li>
+      <li>Certifications: Google Data Analytics, Excel, SQL, etc.</li>
+    </ul>
+    <h2>Step 6: Grow Your Network the Right Way</h2>
+    <ul>
+      <li>Connect with classmates, alumni, professionals in your field.</li>
+      <li>Write a brief personalized note: “Hey, I see you also work in analytics and went to UMD—would love to connect!”</li>
+      <li>Join LinkedIn groups focused on analytics, data science, and your industry interests.</li>
+    </ul>
+    <h2>Step 7: Post, Comment, and Share</h2>
+    <ul>
+      <li>Share your wins (“Just finished a Tableau dashboard analyzing NBA trends—link below!”).</li>
+      <li>Comment on posts from others in the field; ask questions and engage.</li>
+      <li>Share interesting articles, your blog posts, or insights from projects.</li>
+    </ul>
+    <h2>Step 8: Use Keywords for the Algorithm</h2>
+    <ul>
+      <li>Sprinkle relevant keywords throughout: “SQL,” “data visualization,” “predictive modeling,” “Tableau,” etc.</li>
+      <li>This makes you show up in recruiter searches for entry-level analyst roles.</li>
+    </ul>
+    <h2>Final Checklist</h2>
+    <ul>
+      <li>✅ Clear, relevant headline</li>
+      <li>✅ Story-focused About section</li>
+      <li>✅ Detailed Experience and Projects</li>
+      <li>✅ Certifications and skills</li>
+      <li>✅ At least 50 connections</li>
+      <li>✅ Custom LinkedIn URL (e.g., linkedin.com/in/mikhail-tabong)</li>
+    </ul>
+    <h2>Resources</h2>
+    <ul>
+      <li><a href="https://www.linkedin.com/in/mikhail-tabong/" target="_blank">My LinkedIn (see real-life example)</a></li>
+      <li><a href="https://www.mikhail-tabong.github.io/" target="_blank">My Website & Blog</a></li>
+      <li><a href="https://www.alyssagilmer.com/linkedin-analytics-guide/" target="_blank">LinkedIn Analytics Guide</a></li>
+    </ul>
+    <h2>My Biggest Lessons</h2>
+    <p>When I finally landed my first analytics internship, almost every recruiter said, “I found you on LinkedIn.” It’s worth the effort. Your profile is your personal brand—keep it up to date, stay active, and keep learning. Feel free to reach out if you want feedback on your profile!</p>
+  </article>
+
+  <!-- POST 2 -->
+  <article id="sql">
+    <h1>📊 Essential SQL Skills Every Data Analyst Needs</h1>
+    <div class="date">May 3, 2025 • 10 min read</div>
+    <h2>Why SQL Is Non-Negotiable</h2>
+    <p>SQL is the language of data, used by nearly every analytics and BI tool out there. Mastering it means unlocking the ability to pull, wrangle, and interpret real business data. Most dashboards, reports, and product insights start with a query.</p>
+    <h2>Top SQL Skills and Concepts</h2>
+    <ul>
+      <li><strong>SELECT statements:</strong> for basic queries</li>
+      <li><strong>JOINs:</strong> (INNER, LEFT, RIGHT) for combining tables</li>
+      <li><strong>WHERE, GROUP BY, HAVING, ORDER BY:</strong> for filtering and aggregating</li>
+      <li><strong>Window functions:</strong> (ROW_NUMBER, RANK, SUM OVER, etc.)</li>
+      <li><strong>Subqueries and CTEs:</strong> (WITH clauses) for complex logic</li>
+      <li><strong>Case statements:</strong> for conditional analysis</li>
+      <li><strong>Indexes:</strong> for query performance</li>
+      <li><strong>Basic data cleaning with SQL:</strong> Removing duplicates/nulls, fixing errors in query</li>
+    </ul>
+    <h2>Real-World Examples</h2>
+    <p>Almost every internship or class project I did started with SQL: finding customer churn, sales dashboarding, survey analysis, or prepping data for Tableau. Even building Tableau dashboards often starts with a custom SQL query!</p>
+    <h2>Practice Resources</h2>
+    <ul>
+      <li><a href="https://leetcode.com/problemset/database/" target="_blank">LeetCode SQL</a> — Practice SQL interview questions</li>
+      <li><a href="https://mode.com/sql-tutorial/" target="_blank">Mode SQL Tutorial</a></li>
+      <li><a href="https://www.hackerrank.com/domains/tutorials/10-days-of-sql" target="_blank">HackerRank 10 Days of SQL</a></li>
+      <li><a href="https://www.sqlbolt.com/" target="_blank">SQLBolt Interactive Lessons</a></li>
+    </ul>
+    <h2>Pro Tips</h2>
+    <ul>
+      <li>Always comment your queries for clarity—especially in team settings.</li>
+      <li>Get comfortable reading and editing other people’s SQL.</li>
+      <li>Practice with real, messy data—open data portals, Kaggle, or your own exported spreadsheets.</li>
+      <li>Use window functions to make your queries more powerful and concise!</li>
+    </ul>
+    <p>Bottom line: If you can write, explain, and debug SQL queries, you’re already ahead of 80% of applicants for entry-level analytics roles.</p>
+  </article>
+
+  <!-- POST 3 -->
+  <article id="portfolio">
+    <h1>🛠️ Building a Portfolio to Land Your First Analytics Job</h1>
+    <div class="date">May 10, 2025 • 10 min read</div>
+    <h2>Why Portfolios Matter</h2>
+    <p>In analytics, your portfolio proves what you know. It's your chance to show—not just tell—what you can do. This is especially crucial if you’re pivoting careers or don’t have direct experience yet. I landed my first real analytics role by sending my portfolio link with my application!</p>
+    <h2>What to Include</h2>
+    <ul>
+      <li><strong>3-4 well-documented projects:</strong> Each should have a clear business question, methods, and results. Example: “Sales trend dashboard for Superstore data.”</li>
+      <li><strong>Skills in context:</strong> SQL queries, data cleaning scripts, Tableau dashboards, and Python notebooks.</li>
+      <li><strong>Documentation:</strong> Screenshots, process write-ups, and GitHub/website links.</li>
+    </ul>
+    <h2>Portfolio Project Ideas</h2>
+    <ul>
+      <li>Sales data dashboards (Superstore, public e-commerce datasets)</li>
+      <li>Survey analysis with visualizations</li>
+      <li>Spotify or Netflix usage trends (use public APIs or Kaggle datasets)</li>
+      <li>NBA/NFL stats visualizations</li>
+      <li>Predictive models: churn, housing prices, or disease outcomes</li>
+    </ul>
+    <h2>Showcase Platforms</h2>
+    <ul>
+      <li><a href="https://github.com/" target="_blank">GitHub</a> — for code & notebooks</li>
+      <li><a href="https://public.tableau.com/" target="_blank">Tableau Public</a> — for dashboards</li>
+      <li>Your own website (like <a href="https://mikhail-tabong.github.io/" target="_blank">mine</a>) — for curated, professional presentation</li>
+    </ul>
+    <h2>Tips for a Strong Portfolio</h2>
+    <ul>
+      <li>Make your README files clear and friendly. Explain your thought process for each project.</li>
+      <li>Use real-world datasets and explain business value.</li>
+      <li>Don’t overload your portfolio. 3-5 great projects > 10 quick ones.</li>
+      <li>Write a blog post or LinkedIn summary for each project—employers actually read these.</li>
+    </ul>
+    <h2>Bottom Line</h2>
+    <p>A solid portfolio can open doors even before you get your first analytics job. Invest the time, show off your personality, and share it everywhere you can.</p>
+  </article>
+
+  <!-- POST 4 -->
+  <article id="ml">
+    <h1>🤖 How Much Machine Learning Do You Really Need?</h1>
+    <div class="date">May 18, 2025 • 10 min read</div>
+    <h2>Analytics vs. Data Science vs. ML</h2>
+    <p>Not every data analyst needs to build neural networks, but basic ML is becoming a core part of many analyst roles. Knowing the basics makes you more flexible—and more marketable. I started with classification and clustering projects (think: customer churn prediction, clustering Spotify users by genre) and that alone set me apart from other applicants.</p>
+    <h2>Essential ML Topics for Analysts</h2>
+    <ul>
+      <li>Supervised learning (classification, regression)</li>
+      <li>Unsupervised learning (clustering, PCA)</li>
+      <li>Train/test splits and cross-validation</li>
+      <li>Metrics (accuracy, F1, confusion matrix, AUC-ROC)</li>
+      <li>Bias, overfitting, and fairness basics</li>
+    </ul>
+    <h2>Real-World Use Cases</h2>
+    <ul>
+      <li>Predicting customer churn with logistic regression</li>
+      <li>Segmenting customers using clustering</li>
+      <li>Forecasting sales with time-series models</li>
+    </ul>
+    <h2>Learning Resources</h2>
+    <ul>
+      <li><a href="https://www.coursera.org/specializations/machine-learning" target="_blank">Coursera ML Specialization (Andrew Ng)</a></li>
+      <li><a href="https://scikit-learn.org/stable/tutorial/" target="_blank">scikit-learn Tutorials</a></li>
+      <li><a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank">Kaggle ML Crash Course</a></li>
+    </ul>
+    <h2>Tips for Analytics-Focused ML</h2>
+    <ul>
+      <li>Focus more on explaining results than just building models.</li>
+      <li>Include at least one ML project in your portfolio, but tie it to a real business problem.</li>
+      <li>Practice model evaluation and storytelling: “What does this accuracy mean for the business?”</li>
+      <li>Don’t overpromise—ML is powerful, but communicate its limits.</li>
+    </ul>
+    <p>Showing some ML knowledge helps you stand out, but your superpower as an analyst will always be making data actionable for non-technical audiences.</p>
+  </article>
+
+  <!-- POST 5 -->
+  <article id="roadmap">
     <h1>📍 My Data Analytics Roadmap</h1>
-    <div class="date">May 29, 2025 • 6 min read</div>
-
+    <div class="date">May 29, 2025 • 10 min read</div>
+    <h2>How I Got Started (And Why Slow Is Fast)</h2>
     <p>Before I started seriously building projects and applying for internships, I spent around 6–8 months diving deep into the fundamentals of data analytics. It wasn’t a fast process, but it was a rewarding one—and the time I invested upfront paid off later when I was working on real-world problems in class and during internships.</p>
+    <h2>Step 1: Google Data Analytics Certificate</h2>
+    <p>I began in October 2024 with the <a href="https://www.coursera.org/professional-certificates/google-data-analytics" target="_blank" rel="noopener noreferrer">Google Data Analytics Certificate</a> on Coursera. It made concepts like data cleaning, visualization, and SQL/R basics approachable.</p>
+    <h2>Step 2: Projects (School & Personal)</h2>
+    <p>After two months, I started building real projects—school assignments, public data sets, and anything that interested me. These hands-on experiences were more valuable than any textbook. Each project grew my confidence with Python, Tableau, and real data wrangling.</p>
+    <h2>Step 3: Exploring Data Engineering & Science</h2>
+    <p>I dabbled in <strong>data engineering</strong> (ETL, pipelines, database design) and <strong>data science</strong> (predictive modeling, clustering). This gave me a big-picture view and let me talk shop with engineers and scientists alike.</p>
+    <h2>🗺️ My 6–8 Month Timeline</h2>
+    <ul>
+      <li><strong>Month 1–2:</strong> Google Data Analytics Certificate (Coursera)</li>
+      <li><strong>Month 3:</strong> Started building small projects from school assignments</li>
+      <li><strong>Month 4:</strong> Learned SQL, Tableau, Python basics</li>
+      <li><strong>Month 5:</strong> Completed first full project with dashboard and write-up</li>
+      <li><strong>Month 6:</strong> Explored ML basics and started a classification project</li>
+      <li><strong>Month 7–8:</strong> Improved GitHub portfolio, started blogging, and networking</li>
+    </ul>
+    <h2>My Tips</h2>
+    <ul>
+      <li>Treat learning like a part-time job—block time each week and track your progress.</li>
+      <li>Ask business questions for every project. “How would a company use this analysis?”</li>
+      <li>Communication is key: practice presenting results, not just coding them.</li>
+      <li>Document your journey—GitHub, Notion, a blog, whatever works for you.</li>
+      <li>Add at least one ML project, but focus on business value.</li>
+      <li>Don’t rush. Deep understanding beats shallow tutorials every time.</li>
+    </ul>
+  </article>
 
-    <p>I kicked things off with the <a href="https://www.coursera.org/professional-certificates/google-data-analytics" target="_blank" rel="noopener noreferrer">Google Data Analytics Certificate</a>. It was a structured, beginner-friendly way to understand what analytics is all about. Through that, I learned the basics of data cleaning, visualization, and interpreting results through tools like SQL, R, and spreadsheets.</p>
-
-    <p>From there, I started building projects—most of them tied to my coursework or ideas I was curious about. Each project gave me more confidence with Python and tools like Tableau, and helped me practice working with real datasets.</p>
-
-    <p>I also explored other data tracks along the way: I dabbled in <strong>data engineering</strong> to understand pipelines and infrastructure, and <strong>data science</strong> to learn about predictive modeling and more advanced analysis techniques.</p>
-
-    <div style="margin: 2rem 0;">
-      <h2>🗺️ My 6–8 Month Learning Timeline</h2>
-      <ul style="list-style-type: none; padding: 0;">
-        <li><strong>Month 1–2:</strong> Google Data Analytics Certificate (Coursera)</li>
-        <li><strong>Month 3:</strong> Started building small projects from school assignments</li>
-        <li><strong>Month 4:</strong> Learned SQL, Tableau, Python basics</li>
-        <li><strong>Month 5:</strong> Completed first full project with dashboard and write-up</li>
-        <li><strong>Month 6:</strong> Explored machine learning basics and started a classification project</li>
-        <li><strong>Month 7–8:</strong> Continued improving GitHub portfolio, blogging, and networking</li>
-      </ul>
-    </div>
-
-    <p>One thing that helped me stay on track was building a study routine. I treated learning analytics like a part-time job—setting aside evenings or weekend hours to go through lessons, build out small projects, and revise what I learned. Having that structure made a huge difference and helped me avoid burnout.</p>
-
-    <p>While working on school-related projects, I also began exploring how analytics ties into broader business goals. I started asking questions like: What kind of problems do companies use data to solve? How do data analysts collaborate with product or marketing teams? This helped me understand the bigger picture, not just the technical skills.</p>
-
-    <p>Eventually, I began contributing to group projects where I wasn’t just writing code or cleaning data—I was also responsible for presenting findings, building dashboards, and making recommendations. That’s when things really started to click. Analytics isn’t just about data. It’s about communication. If you can clearly explain what the data says and why it matters, you're already ahead.</p>
-
-    <p>If you're just starting out, I’d also suggest learning some basic statistics. Concepts like correlation, mean/median, p-values, and distributions are incredibly useful when interpreting data. You don’t need a full stats degree, but having a working knowledge will give you more confidence when you analyze or explain trends.</p>
-
-    <p><strong>Tip:</strong> Machine learning projects are becoming more important even for entry-level analytics roles. While you don’t need to be a full data scientist, having a couple of projects that include classification or regression modeling can set you apart. Employers want to see that you understand both how to interpret results and how to build models responsibly.</p>
-
-    <p>Lastly, document everything. Keep a learning journal, a GitHub repo, a blog—something that shows your progress. It helps you retain knowledge and gives others something to see if they want to understand what you’re about.</p>
-  </main>
-
-  <main id="post1">
+  <!-- POST 6 -->
+  <article id="start">
     <h1>🧠 So You Wanna Learn Data Analytics? Here's Where to Start (No Gatekeeping)</h1>
-    <div class="date">June 8, 2025 • 7 min read</div>
-
-    <p>If you're reading this, chances are you've heard the buzz around data analytics and are wondering how to get started. Maybe you're a student trying to choose a career path, someone switching fields, or just data-curious. Whatever your background, the good news is: it's never too late, and you don't need a computer science degree to break in. You just need direction, consistency, and a plan.</p>
-
-    <h2>📍 Step 1: Understand What Data Analytics Really Is</h2>
-    <p>Data analytics is about turning information into insight. At its core, you're collecting, cleaning, analyzing, and visualizing data to solve real-world problems or uncover patterns. Think of it as storytelling, but with charts and numbers.</p>
-    <p>You may have heard terms like data science, business intelligence, or machine learning. While related, data analytics usually focuses more on descriptive and diagnostic analysis—"What happened?" and "Why did it happen?"—rather than prediction or automation. This makes it a perfect entry point.</p>
-
-    <h2>💻 Step 2: Learn the Tools That Matter</h2>
-    <p>It’s easy to get overwhelmed by tech jargon, but here’s a simple stack that’ll cover 90% of what you’ll need in your first job:</p>
+    <div class="date">June 8, 2025 • 10 min read</div>
+    <p>If you're reading this, you’re probably curious about a career in analytics. The good news: you don’t need to be a math genius or CS major. Here’s my friendly, honest roadmap for breaking in—no gatekeeping, just real advice.</p>
+    <h2>Step 1: What is Data Analytics?</h2>
+    <p>Analytics is all about turning information into actionable insights. You’ll learn to collect, clean, analyze, and visualize data—think of it as storytelling with numbers.</p>
+    <h2>Step 2: Learn the Tools</h2>
     <ul>
-      <li><strong>SQL</strong> – Used in almost every analyst role to retrieve and manipulate data from databases.</li>
-      <li><strong>Excel/Google Sheets</strong> – Not glamorous, but still powerful for quick calculations and data wrangling.</li>
-      <li><strong>Python</strong> – Popular for automation, cleaning large datasets, and more complex analysis.</li>
-      <li><strong>Tableau or Power BI</strong> – Tools to create interactive dashboards and compelling data visuals.</li>
+      <li><strong>SQL</strong>—the foundation of most analytics work</li>
+      <li><strong>Excel or Google Sheets</strong>—for data cleaning and quick analysis</li>
+      <li><strong>Python</strong>—for automation and deeper dives</li>
+      <li><strong>Tableau/Power BI</strong>—to build dashboards anyone can understand</li>
     </ul>
-    <p>Start with one tool at a time. Master the basics of SQL and Excel first. Once you're comfortable, expand into Python and visualization platforms.</p>
-
-    <h2>🔬 Step 3: Get Hands-On with Projects</h2>
-    <p>The best way to learn is by doing. Reading tutorials can only get you so far—you need to apply what you’re learning in real scenarios. Start with public datasets from places like Kaggle, Google Dataset Search, or Data.gov. Try answering a question you're genuinely curious about. For example:</p>
+    <p>Start simple: learn one tool at a time. Master SQL basics, get comfortable in Excel, then move into Python and dashboarding platforms.</p>
+    <h2>Step 3: Do Real Projects</h2>
     <ul>
-      <li>How do COVID-19 vaccination rates correlate with case counts?</li>
-      <li>Which Netflix genres are most popular across different countries?</li>
-      <li>Can you clean and visualize your bank statement to find spending patterns?</li>
+      <li>Find public datasets: Kaggle, Data.gov, Google Dataset Search</li>
+      <li>Try answering a real question: e.g., “How did NBA 3-point attempts change after 2010?” or “What trends do Spotify users follow?”</li>
+      <li>Write a few sentences on each project: what you tried, what you found, what surprised you</li>
     </ul>
-    <p>Build these into small portfolio projects and document them well. Write a few sentences on your goals, what you found, and how you did it. This shows future employers that you not only know the tools, but you know how to think critically with data.</p>
-
-    <h2>💬 Step 4: Build In Public and Network</h2>
-    <p>One of the best ways to grow fast is by sharing your learning journey. Post on LinkedIn, create a GitHub portfolio, or start a blog like this one. You don’t need to be an expert—just be open about what you're exploring.</p>
-    <p>Also, don’t underestimate the power of networking. Engage with people in the field, ask questions, attend virtual meetups, and join data communities on Discord or Twitter. The data world is big, but welcoming.</p>
-
-    <h2>📅 Step 5: Be Consistent and Realistic</h2>
-    <p>You don’t need to learn everything in one month. Set a learning schedule—maybe 1 hour a day, or 6 hours a week. Consistency beats cramming. Build momentum, stay curious, and don’t be afraid to Google things (we all do).</p>
-    <p>Expect to feel confused sometimes. That’s normal. But every skill you learn builds on the last one. Celebrate small wins, whether that’s writing your first SQL query or building your first chart.</p>
-
-    <h2>🔍 Resources Worth Your Time</h2>
+    <h2>Step 4: Build in Public & Network</h2>
     <ul>
-      <li><a href="https://www.kaggle.com/learn">Kaggle Learn</a> – Free mini-courses on Python, SQL, and machine learning.</li>
+      <li>Share your progress on LinkedIn, GitHub, or a blog (like this one!)</li>
+      <li>Join analytics and data Discord servers, attend meetups, comment on other analysts’ posts</li>
+      <li>Don’t wait to be “expert” to post—share your learning journey</li>
+    </ul>
+    <h2>Step 5: Stay Consistent & Realistic</h2>
+    <ul>
+      <li>Set a weekly goal—1 hour a day or a couple evenings a week</li>
+      <li>Track your progress and celebrate small wins (your first query, your first dashboard!)</li>
+      <li>It’s normal to feel confused at first. Keep going. Every skill builds on the last.</li>
+    </ul>
+    <h2>Starter Resources</h2>
+    <ul>
+      <li><a href="https://www.kaggle.com/learn">Kaggle Learn</a></li>
       <li><a href="https://www.coursera.org/professional-certificates/google-data-analytics">Google Data Analytics Certificate</a></li>
-      <li><a href="https://mode.com/sql-tutorial/">SQL Tutorial by Mode Analytics</a></li>
-      <li><a href="https://www.freecodecamp.org/learn/">freeCodeCamp</a> – Great for Python and general data topics.</li>
+      <li><a href="https://mode.com/sql-tutorial/">Mode SQL Tutorial</a></li>
+      <li><a href="https://www.freecodecamp.org/learn/">freeCodeCamp</a></li>
     </ul>
-
-    <p>That’s the roadmap. No fluff, no gatekeeping. In future posts, I’ll cover how to build your portfolio, what to put on your resume, and how to stand out when applying for roles. For now, start where you are, use what you have, and just begin.</p>
-  </main>
+    <p>That’s the roadmap—no fluff, no gatekeeping. Start where you are, use what you have, and keep building. If you ever want advice or feedback, my DMs are open!</p>
+  </article>
 
   <footer>
     <p>© 2025 Mikhail Tabong</p>
