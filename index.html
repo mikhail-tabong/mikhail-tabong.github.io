@@ -15,7 +15,7 @@
       --umd-light-gray: #D9D9D9;
       --umd-medium-gray: #9C9A9B;
 
-      /* UMD Dark Theme Variables */
+      /* Dark Theme Variables */
       --bg: #1A1A1A; /* Dark charcoal background */
       --surface: #2C2C2C; /* Lighter gray for cards */
       --text: var(--umd-white);
@@ -28,24 +28,8 @@
       --border-color: #444444; /* Border for subtle separation */
     }
 
-    .light-mode {
-      --bg: #ffffff;
-      --surface: #f2f2f2;
-      --text: #000000;
-      --light-text: #555555;
-      --border-color: #cccccc;
-      --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
     body {
       transition: background 0.3s, color 0.3s;
-    }
-
-    .portfolio-card,
-    .portfolio-filter {
-      transition: background 0.3s, color 0.3s, transform 0.2s;
-    }
-    html, body {
       font-family: 'Lato', Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
@@ -58,7 +42,7 @@
     nav {
       position: sticky;
       top: 0;
-      background: rgba(44, 44, 44, 0.8); /* Dark semi-transparent surface */
+      background: rgba(44, 44, 44, 0.8);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border-color);
       z-index: 999;
@@ -102,7 +86,7 @@
       justify-content: center;
       min-height: 80vh;
       text-align: center;
-      padding: 3rem 1rem 2rem 1rem;
+      padding: 3rem 1rem 2rem;
     }
     .hero .portrait {
       width: 350px;
@@ -110,14 +94,13 @@
       object-fit: cover;
       border-radius: 16px;
       margin-bottom: 1.2rem;
-      border: 3px solid var(--accent); /* Sharp red border */
+      border: 3px solid var(--accent);
       flex-shrink: 0;
     }
     .hero h1 {
       font-size: 2.1rem;
-      margin: 0.4rem 0 0.3rem 0;
+      margin: 0.4rem 0 0.3rem;
       flex-basis: 100%;
-      text-align: center;
       color: var(--text);
     }
     .hero h2 {
@@ -126,15 +109,13 @@
       font-weight: 400;
       margin-bottom: 1rem;
       flex-basis: 100%;
-      text-align: center;
     }
     .hero .tagline {
       font-size: 1.17rem;
       font-weight: 700;
       margin-bottom: 1.7rem;
-      color: var(--accent-secondary); /* Gold pops on dark background */
+      color: var(--accent-secondary);
       flex-basis: 100%;
-      text-align: center;
     }
     .hero .cta-buttons {
       display: flex;
@@ -147,11 +128,10 @@
       padding: 0.68em 2.2em;
       border-radius: var(--radius);
       background: var(--accent);
-      color: var(--umd-black); /* Black text on red button for contrast */
+      color: var(--umd-black);
       font-weight: bold;
       text-decoration: none;
       font-size: 1rem;
-      margin-bottom: 0.2rem;
       transition: background 0.2s, transform 0.2s;
       border: 2px solid var(--accent);
     }
@@ -164,7 +144,6 @@
     .hero .cta-buttons a:focus {
       background: var(--accent-light);
       border-color: var(--accent-light);
-      color: var(--umd-black);
       transform: translateY(-2px) scale(1.03);
       outline: none;
     }
@@ -229,8 +208,6 @@
     .quick-facts .fact-group {
       margin-bottom: 0.4rem;
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
       align-items: baseline;
       gap: 0.3rem;
     }
@@ -244,6 +221,7 @@
       text-decoration: underline;
       outline: none;
     }
+
     @media (max-width: 900px) {
       .about-section {
         flex-direction: column;
@@ -252,8 +230,6 @@
       }
       .quick-facts {
         width: 100%;
-        box-sizing: border-box;
-        margin: 0;
       }
     }
 
@@ -264,8 +240,8 @@
       margin-bottom: 2.5rem;
       color: var(--text);
       text-align: center;
-      padding-bottom: 0.75rem;
       position: relative;
+      padding-bottom: 0.75rem;
     }
     .section-title::after, .current-position-title::after {
       content: '';
@@ -279,11 +255,11 @@
       border-radius: 2px;
     }
 
-    /* Experience & Education Sections */
+    /* Experience & Education */
     .experience-section, .current-position-section {
       max-width: 900px;
-      margin: 0 auto 2.8rem auto;
-      padding: 2.5rem 1.2rem 0 1.2rem;
+      margin: 0 auto 2.8rem;
+      padding: 2.5rem 1.2rem 0;
     }
     .exp-cards {
       display: flex;
@@ -298,8 +274,8 @@
       padding: 1.25rem 1.6rem;
       gap: 1.4rem;
       border-left: 5px solid var(--accent);
-      transition: border-color 0.2s, transform 0.2s;
       border: 1px solid var(--border-color);
+      transition: border-color 0.2s, transform 0.2s;
     }
     .exp-card:hover, .current-position-card:hover {
       border-color: var(--accent);
@@ -310,14 +286,16 @@
       height: 62px;
       object-fit: contain;
       border-radius: 12px;
-      background: var(--umd-white); /* Keep logos on a white background for visibility */
+      background: var(--umd-white);
       border: 1px solid var(--border-color);
-      margin-right: 1.2rem;
-      flex-shrink: 0;
       padding: 4px;
       box-sizing: border-box;
+      flex-shrink: 0;
     }
-    .exp-content, .current-position-content { flex: 1; min-width: 0; }
+    .exp-content, .current-position-content {
+      flex: 1;
+      min-width: 0;
+    }
     .exp-header, .current-position-header {
       display: flex;
       flex-wrap: wrap;
@@ -328,41 +306,39 @@
       margin-bottom: 0.25rem;
     }
     .exp-role, .current-position-role { color: var(--accent); }
-    .exp-company, .current-position-company { color: var(--text); font-weight: 700; }
+    .exp-company, .current-position-company { color: var(--text); }
     .current-position-contract { color: var(--light-text); font-size: 1.05rem; }
     .exp-details, .current-position-details {
-      font-size: 0.96rem;
-      color: var(--light-text);
-      margin-bottom: 0.35rem;
       display: flex;
       gap: 1.1rem;
       flex-wrap: wrap;
+      color: var(--light-text);
+      font-size: 0.96rem;
+      margin-bottom: 0.35rem;
     }
     .exp-bullets {
       margin: 0.4rem 0 0 0;
       padding-left: 1.07rem;
-      color: var(--text);
       line-height: 1.6;
       font-size: 0.99rem;
+      color: var(--text);
     }
     .exp-bullets li { margin-bottom: 0.25rem; }
     @media (max-width: 700px) {
       .exp-card, .current-position-card {
         flex-direction: column;
-        align-items: flex-start;
         gap: 0.7rem;
       }
       .exp-logo, .current-position-logo {
         margin-bottom: 0.5rem;
-        margin-right: 0;
       }
     }
 
     /* Skills Section */
     .skills-section {
       max-width: 900px;
-      margin: 0 auto 2.8rem auto;
-      padding: 2.5rem 1.2rem 0 1.2rem;
+      margin: 0 auto 2.8rem;
+      padding: 2.5rem 1.2rem 0;
     }
     .skills-grid {
       display: grid;
@@ -376,10 +352,8 @@
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
     }
     .skill-group h4 {
-      margin-top: 0;
       margin-bottom: 1.1rem;
       font-size: 1.1rem;
       color: var(--accent);
@@ -393,41 +367,41 @@
     .skill-pill {
       background: var(--bg);
       color: var(--text);
-      font-weight: 500;
+      border: 1px solid var(--border-color);
       border-radius: 999px;
       padding: 0.4em 1.2em;
       font-size: 0.96rem;
-      border: 1px solid var(--border-color);
+      font-weight: 500;
     }
 
     /* Portfolio Section */
     .portfolio-section {
       max-width: 1200px;
-      margin: 0 auto 2.8rem auto;
-      padding: 2.5rem 1.2rem 0 1.2rem;
+      margin: 0 auto 2.8rem;
+      padding: 2.5rem 1.2rem 0;
     }
-      .portfolio-filters {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-bottom: 1rem;
-        flex-wrap: wrap;
-      }
-      .portfolio-filter {
-        padding: 0.4rem 0.8rem;
-        background: var(--surface);
-        color: var(--text);
-        border: 1px solid var(--border-color);
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        transition: background 0.2s, color 0.2s;
-      }
-      .portfolio-filter.active,
-      .portfolio-filter:hover {
-        background: var(--accent);
-        color: var(--umd-black);
-      }
+    .portfolio-filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .portfolio-filter {
+      padding: 0.4rem 0.8rem;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .portfolio-filter.active,
+    .portfolio-filter:hover {
+      background: var(--accent);
+      color: var(--umd-black);
+    }
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -437,35 +411,34 @@
       background: var(--surface);
       border-radius: var(--radius);
       border: 1px solid var(--border-color);
-      transition: border-color 0.2s, transform 0.2s;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      cursor: default; /* Card itself is not clickable */
+      cursor: default;
+      transition: border-color 0.2s, transform 0.2s;
     }
     .portfolio-card:hover {
-      transform: translateY(-5px);
       border-color: var(--accent);
+      transform: translateY(-5px);
     }
     .portfolio-card img {
-        width: 100%;
-        border-radius: 0;
-        margin-bottom: 0;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
     }
     .portfolio-content {
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
     .portfolio-content h3 {
-      margin: 0 0 0.5rem 0;
+      margin-bottom: 0.5rem;
       font-size: 1.2rem;
       color: var(--accent);
     }
-    .portfolio-content p, .portfolio-content ul {
+    .portfolio-content p,
+    .portfolio-content ul {
       color: var(--light-text);
       flex-grow: 1;
       font-size: 0.98rem;
@@ -474,12 +447,10 @@
       margin: 0.65rem 0 1.5rem 1.1rem;
       padding: 0;
     }
-    
-    /* NEW: Styles for Icon Links */
     .portfolio-links {
-      margin-top: auto; /* Pushes icons to the bottom */
+      margin-top: auto;
       display: flex;
-      gap: 1.25rem; /* Space between icons */
+      gap: 1.25rem;
     }
     .portfolio-links a {
       color: var(--light-text);
@@ -490,17 +461,17 @@
       color: var(--accent);
       transform: scale(1.1);
     }
-    .portfolio-links a svg {
+    .portfolio-links svg {
       width: 24px;
       height: 24px;
-      fill: currentColor; /* SVG color will inherit from the 'a' tag color */
+      fill: currentColor;
     }
-    
+
     /* Services Section */
     .services-section {
       max-width: 750px;
-      margin: 0 auto 3.1rem auto;
-      padding: 2.5rem 1.2rem 0 1.2rem;
+      margin: 0 auto 3.1rem;
+      padding: 2.5rem 1.2rem 0;
     }
     .services-card {
       background: var(--surface);
@@ -512,19 +483,18 @@
       text-align: center;
     }
     .services-card ul {
-      margin: 1.2rem 0 0.3rem 0;
-      padding: 0;
       list-style-type: none;
+      margin: 1.2rem 0 0.3rem;
+      padding: 0;
     }
 
     /* Contact Section */
     .contact-section {
       max-width: 800px;
-      margin: 0 auto 4rem auto;
-      padding: 2.5rem 1.2rem 0 1.2rem;
+      margin: 0 auto 4rem;
+      padding: 2.5rem 1.2rem 0;
     }
     .contact-info {
-      font-size: 1.1rem;
       background: var(--surface);
       border-radius: var(--radius);
       border: 1px solid var(--border-color);
@@ -532,6 +502,7 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      font-size: 1.1rem;
     }
     .contact-info a {
       color: var(--accent);
@@ -542,9 +513,6 @@
     .contact-info a:focus {
       text-decoration: underline;
       outline: none;
-    }
-    @media (max-width: 900px) {
-      .portfolio-grid { grid-template-columns: 1fr; }
     }
 
     /* Fade-in animation */
@@ -575,17 +543,6 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transition: background 0.2s ease, transform 0.2s ease;
     }
-
-    #progressBar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 4px;
-      background: var(--accent);
-      z-index: 1000;
-      transition: width 0.2s ease-out;
-    }
     #backToTop:hover,
     #backToTop:focus {
       background-color: var(--accent-light);
@@ -602,19 +559,9 @@
       color: var(--text);
       cursor: pointer;
     }
-    #themeToggle {
-      font-size: 1.4rem;
-      background: none;
-      border: none;
-      color: var(--text);
-      cursor: pointer;
-      margin-left: 1rem;
-    }
-
     @media (max-width: 768px) {
       nav { flex-wrap: wrap; }
       .hamburger { display: block; }
-      nav ul { gap: 0; }
       .nav-links {
         display: none;
         flex-direction: column;
@@ -628,8 +575,6 @@
       .nav-links li {
         padding: 0.8rem 1rem;
         text-align: left;
-        width: 100%;
-        box-sizing: border-box;
       }
     }
 
@@ -658,14 +603,6 @@
   </style>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const themeToggle = document.getElementById("themeToggle");
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-      document.body.classList.add("light-mode");
-    }
-    if (themeToggle) {
-      themeToggle.textContent = document.body.classList.contains("light-mode") ? "🌙" : "☀";
-    }
       // Fade-in on scroll
       const observer = new IntersectionObserver(
         (entries) => {
@@ -701,8 +638,6 @@
           navLinks.classList.toggle("show");
         });
       }
-
-      // Close menu on nav link click (for mobile)
       document.querySelectorAll(".nav-links a").forEach((link) => {
         link.addEventListener("click", () => {
           if (navLinks.classList.contains("show")) {
@@ -726,16 +661,6 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
-      // Theme toggle with persistence
-      if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-          document.body.classList.toggle("light-mode");
-          const isLight = document.body.classList.contains("light-mode");
-          themeToggle.textContent = isLight ? "🌙" : "☀";
-          localStorage.setItem("theme", isLight ? "light" : "dark");
-        });
-      }
-
       // Portfolio filtering
       const filterButtons = document.querySelectorAll(".portfolio-filter");
       const portfolioCards = document.querySelectorAll(".portfolio-card");
@@ -746,11 +671,7 @@
           btn.classList.add("active");
           portfolioCards.forEach((card) => {
             const cardCat = card.dataset.category;
-            if (category === "all" || cardCat.includes(category)) {
-              card.style.display = "block";
-            } else {
-              card.style.display = "none";
-            }
+            card.style.display = (category === "all" || cardCat.includes(category)) ? "block" : "none";
           });
         });
       });
@@ -765,7 +686,6 @@
   <nav>
     <div class="brand">Mikhail Tabong</div>
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">&#9776;</button>
-      <button id="themeToggle" aria-label="Toggle theme">☀</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -787,9 +707,7 @@
     <div class="tagline">
       InfoSci Senior @ the University of Maryland, College Park
     </div>
-    <h2>
-      Insight-Driven. Team-Oriented. Outcome-Focused.
-    </h2>
+    <h2>Insight-Driven. Team-Oriented. Outcome-Focused.</h2>
     <div class="cta-buttons">
       <a href="#portfolio">View Portfolio</a>
       <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="outline">Download Resume</a>
@@ -803,9 +721,11 @@
       <p>
         Hi, my name is Mikhail Tabong (pronounced /mɪˈkaɪl tæˈbɔŋ/ — “me-KYLE tah-BONG”), but most of my peers call me Kyle for short. I am a rising senior at the University of Maryland, majoring in Information Science with a concentration in Data Science. Alongside my studies, I currently work as an AML/CTF Analyst for TD Bank through a contract with Protiviti, where I apply analytical skills to support financial crime detection and regulatory compliance.
       </p>
-      <p>With strong expertise in data analytics, SQL, Python, and statistical modeling, I excel at turning complex datasets into actionable insights. I am known for exceeding expectations and delivering high-quality work in collaborative team settings that value efficiency and clear communication.
+      <p>
+        With strong expertise in data analytics, SQL, Python, and statistical modeling, I excel at turning complex datasets into actionable insights. I am known for exceeding expectations and delivering high-quality work in collaborative team settings that value efficiency and clear communication.
       </p>
-      <p>I am passionate about leveraging data to drive impactful decision-making and am eager to advance my career as a Data Analyst, particularly within the finance or healthcare sectors. My goal is to contribute to organizations by optimizing operations and improving outcomes through data-driven strategies.
+      <p>
+        I am passionate about leveraging data to drive impactful decision-making and am eager to advance my career as a Data Analyst, particularly within the finance or healthcare sectors. My goal is to contribute to organizations by optimizing operations and improving outcomes through data-driven strategies.
       </p>
     </div>
     <aside class="quick-facts">
@@ -832,13 +752,10 @@
         <img src="umd-logo.png" alt="University of Maryland logo" class="exp-logo" />
         <div class="exp-content">
           <div class="exp-header">
-            <span class="exp-role">B.Sci in Information Science</span>
-            <span>–</span>
-            <span class="exp-company">University of Maryland, College Park</span>
+            <span class="exp-role">B.Sci in Information Science</span><span>–</span><span class="exp-company">University of Maryland, College Park</span>
           </div>
           <div class="exp-details">
-            <span class="exp-location">College Park, MD</span>
-            <span class="exp-dates">Expected May 2026</span>
+            <span class="exp-location">College Park, MD</span><span class="exp-dates">Expected May 2026</span>
           </div>
         </div>
       </div>
@@ -846,13 +763,10 @@
         <img src="aacc-logo.png" alt="Anne Arundel Community College logo" class="exp-logo" />
         <div class="exp-content">
           <div class="exp-header">
-            <span class="exp-role">General Education</span>
-            <span>–</span>
-            <span class="exp-company">Anne Arundel Community College</span>
+            <span class="exp-role">General Education</span><span>–</span><span class="exp-company">Anne Arundel Community College</span>
           </div>
           <div class="exp-details">
-            <span class="exp-location">Arnold, MD</span>
-            <span class="exp-dates">2022 – 2023</span>
+            <span class="exp-location">Arnold, MD</span><span class="exp-dates">2022 – 2023</span>
           </div>
         </div>
       </div>
@@ -865,14 +779,10 @@
       <img src="tdbank-logo.png" alt="TD Bank logo" class="current-position-logo" />
       <div class="current-position-content">
         <div class="current-position-header">
-          <span class="current-position-role">Financial Crime Compliance Analyst</span>
-          <span>–</span>
-          <span class="current-position-company">TD Bank Mortgaged-Backed Securities</span>
-          <span class="current-position-contract">(Contract via Protiviti)</span>
+          <span class="current-position-role">Financial Crime Compliance Analyst</span><span>–</span><span class="current-position-company">TD Bank Mortgaged-Backed Securities</span><span class="current-position-contract">(Contract via Protiviti)</span>
         </div>
         <div class="current-position-details">
-          <span>Washington, DC</span>
-          <span>June 2025 – Present</span>
+          <span>Washington, DC</span><span>June 2025 – Present</span>
         </div>
       </div>
     </div>
@@ -885,13 +795,10 @@
         <img src="ambulero-logo.png" alt="Ambulero logo" class="exp-logo" />
         <div class="exp-content">
           <div class="exp-header">
-            <span class="exp-role">Data Analyst Intern</span>
-            <span>–</span>
-            <span class="exp-company">Ambulero, Inc.</span>
+            <span class="exp-role">Data Analyst Intern</span><span>–</span><span class="exp-company">Ambulero, Inc.</span>
           </div>
           <div class="exp-details">
-            <span class="exp-location">Miami, FL (Remote)</span>
-            <span class="exp-dates">Dec 2024 – Apr 2025</span>
+            <span class="exp-location">Miami, FL (Remote)</span><span class="exp-dates">Dec 2024 – Apr 2025</span>
           </div>
           <ul class="exp-bullets">
             <li>Streamlined test-data workflows using Python, improving pipeline efficiency by 30%.</li>
@@ -904,13 +811,10 @@
         <img src="chosan-logo.png" alt="Chosan logo" class="exp-logo" />
         <div class="exp-content">
           <div class="exp-header">
-            <span class="exp-role">Data Analyst Intern</span>
-            <span>–</span>
-            <span class="exp-company">Chosan</span>
+            <span class="exp-role">Data Analyst Intern</span><span>–</span><span class="exp-company">Chosan</span>
           </div>
           <div class="exp-details">
-            <span class="exp-location">Los Angeles, CA (Remote)</span>
-            <span class="exp-dates">Oct 2024 – Dec 2024</span>
+            <span class="exp-location">Los Angeles, CA (Remote)</span><span class="exp-dates">Oct 2024 – Dec 2024</span>
           </div>
           <ul class="exp-bullets">
             <li>Audited and optimized contractor inventory database using SQL (reduced discrepancies by 15%).</li>
@@ -922,13 +826,10 @@
         <img src="pdsigma-logo.png" alt="Phi Delta Sigma logo" class="exp-logo" />
         <div class="exp-content">
           <div class="exp-header">
-            <span class="exp-role">Fundraising Chair & Warden</span>
-            <span>–</span>
-            <span class="exp-company">Phi Delta Sigma, Inc.</span>
+            <span class="exp-role">Fundraising Chair & Warden</span><span>–</span><span class="exp-company">Phi Delta Sigma, Inc.</span>
           </div>
           <div class="exp-details">
-            <span class="exp-location">University of Maryland</span>
-            <span class="exp-dates">2023 – Present</span>
+            <span class="exp-location">University of Maryland</span><span class="exp-dates">2023 – Present</span>
           </div>
           <ul class="exp-bullets">
             <li>Led fundraising campaigns, raising over $6,000 for local and national causes.</li>
@@ -1064,6 +965,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
