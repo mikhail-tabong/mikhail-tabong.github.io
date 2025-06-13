@@ -28,15 +28,6 @@
       --border-color: #444444; /* Border for subtle separation */
     }
 
-    .light-mode {
-      --bg: #ffffff;
-      --surface: #f2f2f2;
-      --text: #000000;
-      --light-text: #555555;
-      --border-color: #cccccc;
-      --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
     body {
       transition: background 0.3s, color 0.3s;
     }
@@ -602,14 +593,6 @@
       color: var(--text);
       cursor: pointer;
     }
-    #themeToggle {
-      font-size: 1.4rem;
-      background: none;
-      border: none;
-      color: var(--text);
-      cursor: pointer;
-      margin-left: 1rem;
-    }
 
     @media (max-width: 768px) {
       nav { flex-wrap: wrap; }
@@ -657,15 +640,6 @@
     }
   </style>
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const themeToggle = document.getElementById("themeToggle");
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-      document.body.classList.add("light-mode");
-    }
-    if (themeToggle) {
-      themeToggle.textContent = document.body.classList.contains("light-mode") ? "🌙" : "☀";
-    }
       // Fade-in on scroll
       const observer = new IntersectionObserver(
         (entries) => {
@@ -726,16 +700,6 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
-      // Theme toggle with persistence
-      if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-          document.body.classList.toggle("light-mode");
-          const isLight = document.body.classList.contains("light-mode");
-          themeToggle.textContent = isLight ? "🌙" : "☀";
-          localStorage.setItem("theme", isLight ? "light" : "dark");
-        });
-      }
-
       // Portfolio filtering
       const filterButtons = document.querySelectorAll(".portfolio-filter");
       const portfolioCards = document.querySelectorAll(".portfolio-card");
@@ -765,7 +729,6 @@
   <nav>
     <div class="brand">Mikhail Tabong</div>
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">&#9776;</button>
-      <button id="themeToggle" aria-label="Toggle theme">☀</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
