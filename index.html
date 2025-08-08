@@ -4,6 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mikhail "Kyle" Tabong | Portfolio</title>
+
+  <!-- SEO Essentials -->
+  <meta name="description" content="Mikhail (Kyle) Tabong — Financial Crimes Compliance Analyst and Information Science (Data Science) senior at the University of Maryland. Portfolio of analytics, ML, dashboards, and data engineering projects." />
+  <meta name="theme-color" content="#E21833" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mikhail \"Kyle\" Tabong | Portfolio" />
+  <meta property="og:description" content="Financial Crimes Compliance Analyst & InfoSci (Data Science) senior. View projects in analytics, ML, dashboards, and ETL." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mikhail-tabong.github.io/" />
+  <meta property="og:image" content="profile.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mikhail \"Kyle\" Tabong | Portfolio" />
+  <meta name="twitter:description" content="Financial Crimes Compliance Analyst & InfoSci (Data Science) senior. View projects in analytics, ML, dashboards, and ETL." />
+  <meta name="twitter:image" content="profile.png" />
+
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -28,6 +46,39 @@
       --border-color: #444444; /* Border for subtle separation */
     }
 
+    /* Progress Bar (was referenced in JS but unstyled) */
+    #progressBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent);
+      z-index: 1000;
+    }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      background: var(--accent);
+      color: var(--umd-black);
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      outline: none;
+      z-index: 1001;
+    }
+
     body {
       transition: background 0.3s, color 0.3s;
       font-family: 'Lato', Arial, sans-serif;
@@ -36,6 +87,13 @@
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
+    }
+
+    /* Focus-visible outlines for keyboard users */
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--accent-secondary);
+      outline-offset: 3px;
+      border-radius: 6px;
     }
 
     /* Navbar */
@@ -600,66 +658,139 @@
       text-decoration: underline;
       outline: none;
     }
+
+    /* Reduced Motion Support */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+      .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
   </style>
+
+  <!-- JSON-LD Person Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mikhail Kyle Tabong",
+    "alternateName": "Kyle Tabong",
+    "url": "https://mikhail-tabong.github.io/",
+    "jobTitle": "Financial Crimes Compliance Analyst",
+    "email": "mailto:mikhailtabong@gmail.com",
+    "image": "profile.png",
+    "sameAs": [
+      "https://www.linkedin.com/in/mikhail-tabong",
+      "https://github.com/mikhail-tabong"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Maryland, College Park"
+    },
+    "knowsAbout": [
+      "Data Analysis", "Python", "SQL", "R", "Tableau", "Machine Learning", "ETL", "Data Visualization"
+    ]
+  }
+  </script>
+
   <script>
   document.addEventListener("DOMContentLoaded", function () {
-      // Fade-in on scroll
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
+      // Respect prefers-reduced-motion: if true, mark all fade-ins visible and skip observers
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Fade-in on scroll (skips if reduced motion)
+      const fadeEls = document.querySelectorAll(".fade-in");
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        fadeEls.forEach((section) => observer.observe(section));
+      } else {
+        fadeEls.forEach(el => el.classList.add('visible'));
+      }
+
+      // Enable smooth scrolling only if not reduced-motion
+      if (!reduceMotion) {
+        document.querySelectorAll('nav a[href^="#"]').forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
             }
+            // Set aria-current on clicked link (basic a11y without scrollspy)
+            document.querySelectorAll('nav a[aria-current="page"]').forEach(a => a.removeAttribute('aria-current'));
+            this.setAttribute('aria-current', 'page');
           });
-        },
-        { threshold: 0.1 }
-      );
-      document.querySelectorAll(".fade-in").forEach((section) => {
-        observer.observe(section);
-      });
-
-      // Smooth scrolling
-      document.querySelectorAll('nav a[href^="#"]').forEach((link) => {
-        link.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth" });
-          }
         });
-      });
+      }
 
-      // Hamburger toggle
+      // Hamburger toggle with ARIA state + Esc to close
       const hamburger = document.getElementById("hamburger");
       const navLinks = document.getElementById("navLinks");
       if (hamburger && navLinks) {
+        hamburger.setAttribute('aria-controls', 'navLinks');
+        hamburger.setAttribute('aria-expanded', 'false');
         hamburger.addEventListener("click", () => {
+          const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+          hamburger.setAttribute('aria-expanded', String(!expanded));
           navLinks.classList.toggle("show");
-        });
-      }
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", () => {
-          if (navLinks.classList.contains("show")) {
-            navLinks.classList.remove("show");
+          if (!expanded) {
+            // Move focus to first link when menu opens
+            const firstLink = navLinks.querySelector('a');
+            if (firstLink) firstLink.focus();
+          } else {
+            hamburger.focus();
           }
         });
-      });
+        // Close on Esc
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && navLinks.classList.contains('show')) {
+            navLinks.classList.remove('show');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.focus();
+          }
+        });
+        // Close after clicking any link (mobile)
+        navLinks.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            if (navLinks.classList.contains("show")) {
+              navLinks.classList.remove("show");
+              hamburger.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      }
 
       // Back to top button and scroll progress
       const backToTopBtn = document.getElementById("backToTop");
       const progressBar = document.getElementById("progressBar");
       const updateScrollUI = () => {
         const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
-        const percent = (window.scrollY / scrollTotal) * 100;
-        progressBar.style.width = percent + "%";
-        backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+        const percent = scrollTotal > 0 ? (window.scrollY / scrollTotal) * 100 : 0;
+        if (progressBar) progressBar.style.width = percent + "%";
+        if (backToTopBtn) backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
       };
       window.addEventListener("scroll", updateScrollUI);
       updateScrollUI();
-      backToTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+        });
+      }
 
       // Portfolio filtering
       const filterButtons = document.querySelectorAll(".portfolio-filter");
@@ -681,9 +812,10 @@
 </head>
 <body>
 
-  <div id="progressBar"></div>
+  <a href="#home" class="skip-link">Skip to content</a>
+  <div id="progressBar" aria-hidden="true"></div>
 
-  <nav>
+  <nav role="navigation" aria-label="Primary Navigation">
     <div class="brand">Mikhail Tabong</div>
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">&#9776;</button>
     <ul class="nav-links" id="navLinks">
@@ -698,11 +830,12 @@
     </ul>
   </nav>
 
-  <section class="hero fade-in" id="home">
-    <img src="profile.png" alt="Kyle Tabong profile photo" class="portrait" loading="lazy" />
+  <main id="home" tabindex="-1">
+  <section class="hero fade-in">
+    <img src="profile.png" alt="Kyle Tabong profile photo" class="portrait" loading="lazy" width="350" height="420" />
     <h1>Mikhail “Kyle” Tabong</h1>
     <div class="tagline">
-      Financial Crimes Compliance Analyst @ Protivi 
+      Financial Crimes Compliance Analyst @ Protiviti
     </div>
     <div class="tagline">
       InfoSci Senior @ the University of Maryland, College Park
@@ -749,7 +882,7 @@
     <h2 class="section-title">Education</h2>
     <div class="exp-cards">
       <div class="exp-card">
-        <img src="umd-logo.png" alt="University of Maryland logo" class="exp-logo" />
+        <img src="umd-logo.png" alt="University of Maryland logo" class="exp-logo" width="62" height="62" />
         <div class="exp-content">
           <div class="exp-header">
             <span class="exp-role">B.Sci in Information Science</span><span>–</span><span class="exp-company">University of Maryland, College Park</span>
@@ -760,7 +893,7 @@
         </div>
       </div>
       <div class="exp-card">
-        <img src="aacc-logo.png" alt="Anne Arundel Community College logo" class="exp-logo" />
+        <img src="aacc-logo.png" alt="Anne Arundel Community College logo" class="exp-logo" width="62" height="62" />
         <div class="exp-content">
           <div class="exp-header">
             <span class="exp-role">General Education</span><span>–</span><span class="exp-company">Anne Arundel Community College</span>
@@ -776,7 +909,7 @@
   <section class="current-position-section fade-in" id="current-position">
     <h2 class="current-position-title">Current Position</h2>
     <div class="current-position-card">
-      <img src="protiviti-logo.png" alt="Protiviti logo" class="current-position-logo" />
+      <img src="protiviti-logo.png" alt="Protiviti logo" class="current-position-logo" width="62" height="62" />
       <div class="current-position-content">
         <div class="current-position-header">
           <span class="current-position-role">Financial Crime Compliance Analyst</span><span>–</span><span class="current-position-company">Protiviti</span>
@@ -792,7 +925,7 @@
     <h2 class="section-title">Experience</h2>
     <div class="exp-cards">
       <div class="exp-card">
-        <img src="ambulero-logo.png" alt="Ambulero logo" class="exp-logo" />
+        <img src="ambulero-logo.png" alt="Ambulero logo" class="exp-logo" width="62" height="62" />
         <div class="exp-content">
           <div class="exp-header">
             <span class="exp-role">Data Analyst Intern</span><span>–</span><span class="exp-company">Ambulero, Inc.</span>
@@ -808,7 +941,7 @@
         </div>
       </div>
       <div class="exp-card">
-        <img src="chosan-logo.png" alt="Chosan logo" class="exp-logo" />
+        <img src="chosan-logo.png" alt="Chosan logo" class="exp-logo" width="62" height="62" />
         <div class="exp-content">
           <div class="exp-header">
             <span class="exp-role">Data Analyst Intern</span><span>–</span><span class="exp-company">Chosan</span>
@@ -823,7 +956,7 @@
         </div>
       </div>
       <div class="exp-card">
-        <img src="pdsigma-logo.png" alt="Phi Delta Sigma logo" class="exp-logo" />
+        <img src="pdsigma-logo.png" alt="Phi Delta Sigma logo" class="exp-logo" width="62" height="62" />
         <div class="exp-content">
           <div class="exp-header">
             <span class="exp-role">Fundraising Chair & Warden</span><span>–</span><span class="exp-company">Phi Delta Sigma, Inc.</span>
@@ -896,7 +1029,7 @@
     <div class="portfolio-grid">
 
       <div class="portfolio-card" data-category="data-eng">
-        <img src="blood_glucose_monitor.png" alt="Diabetes Data Monitoring" loading="lazy" />
+        <img src="blood_glucose_monitor.png" alt="Diabetes Data Monitoring" loading="lazy" width="1280" height="720" />
         <div class="portfolio-content">
           <h3>Diabetes Data Warehouse Report</h3>
           <p>Designed and implemented a research-ready SQL data warehouse with over 70K+ patient records and a focus on DEI and privacy.</p>
@@ -909,7 +1042,7 @@
       </div>
 
       <div class="portfolio-card" data-category="ml">
-        <img src="hepatitis_liver.png" alt="Illustration of a liver for Hepatitis study" loading="lazy" />
+        <img src="hepatitis_liver.png" alt="Illustration of a liver for Hepatitis study" loading="lazy" width="1280" height="720" />
         <div class="portfolio-content">
           <h3>Hepatitis Education: Mortality Prediction Using ML</h3>
           <p>Built clinical ML models (Decision Tree, SVM, KNN) to predict hepatitis mortality, prioritizing ethical AI and fairness across demographics.</p>
@@ -925,7 +1058,7 @@
       </div>
 
       <div class="portfolio-card" data-category="ml">
-        <img src="ecommerce_concept.png" alt="Abstract e-commerce concept graphic" loading="lazy" />
+        <img src="ecommerce_concept.png" alt="Abstract e-commerce concept graphic" loading="lazy" width="1280" height="720" />
         <div class="portfolio-content">
           <h3>Mapping Product Similarity in E-Commerce</h3>
           <p>Developed an ML pipeline to visualize product similarities, supporting recommendation, pricing, and bundling strategies using t-SNE and clustering.</p>
@@ -941,7 +1074,7 @@
       </div>
 
       <div class="portfolio-card" data-category="viz">
-        <img src="superstore_sales_dashboard.png" alt="Screenshot of a sales dashboard" loading="lazy" />
+        <img src="superstore_sales_dashboard.png" alt="Screenshot of a sales dashboard" loading="lazy" width="1280" height="720" />
         <div class="portfolio-content">
           <h3>Superstore Sales Dashboard</h3>
           <p>Developed an interactive Tableau dashboard to analyze Superstore sales data and visualize key performance metrics, enabling dynamic filtering for decision support.</p>
@@ -954,7 +1087,7 @@
       </div>
 
       <div class="portfolio-card" data-category="analysis">
-        <img src="nba_logo.png" alt="NBA Logo" loading="lazy" />
+        <img src="nba_logo.png" alt="NBA Logo" loading="lazy" width="1280" height="720" />
         <div class="portfolio-content">
           <h3>Arc Advantage: NBA Three-Point Shot Strategy</h3>
           <p>Analyzed NBA trends using regression and historical data to uncover the evolution and impact of the three-point shot on offensive strategy.</p>
@@ -967,7 +1100,7 @@
       </div>
 
       <div class="portfolio-card" data-category="ml">
-        <img src="spotify_logo.png" alt="Spotify Genre Clustering Illustration" loading="lazy" />
+        <img src="spotify_logo.png" alt="Spotify Genre Clustering Illustration" loading="lazy" width="1280" height="720" />
         <div class="portfolio-content">
           <h3>Enhancing Spotify Genre Clustering</h3>
           <p>
@@ -979,7 +1112,7 @@
           <p><strong>Apr 2025 – May 2025 | College of Information (INFO), University of Maryland</strong></p>
           <div class="portfolio-links">
             <a href="https://github.com/ReservedbyDev/414Final" target="_blank" rel="noopener noreferrer" aria-label="View GitHub Repository" title="View GitHub Repository">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59 .82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             </a>
             <a href="https://medium.com/@reservedbydev/5f634b841af2" target="_blank" rel="noopener noreferrer" aria-label="Read Medium Article" title="Read Medium Article">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
@@ -1024,7 +1157,8 @@
     </div>
   </footer>
 
-  <button id="backToTop" title="Go to top">↑</button>
+  <button id="backToTop" title="Go to top" aria-label="Back to top">↑</button>
 
+  </main>
 </body>
 </html>
