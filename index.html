@@ -432,20 +432,20 @@
       font-weight: 500;
     }
 
-    /* Portfolio Section */
-    .portfolio-section {
+    /*  Section */
+    .-section {
       max-width: 1200px;
       margin: 0 auto 2.8rem;
       padding: 2.5rem 1.2rem 0;
     }
-    .portfolio-filters {
+    .-filters {
       display: flex;
       justify-content: center;
       gap: 1rem;
       margin-bottom: 1rem;
       flex-wrap: wrap;
     }
-    .portfolio-filter {
+    .-filter {
       padding: 0.4rem 0.8rem;
       background: var(--surface);
       color: var(--text);
@@ -455,17 +455,17 @@
       font-size: 0.9rem;
       transition: background 0.2s, color 0.2s;
     }
-    .portfolio-filter.active,
-    .portfolio-filter:hover {
+    .-filter.active,
+    .-filter:hover {
       background: var(--accent);
       color: var(--umd-black);
     }
-    .portfolio-grid {
+    .-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 2rem;
     }
-    .portfolio-card {
+    .-card {
       background: var(--surface);
       border-radius: var(--radius);
       border: 1px solid var(--border-color);
@@ -475,51 +475,51 @@
       cursor: default;
       transition: border-color 0.2s, transform 0.2s;
     }
-    .portfolio-card:hover {
+    .-card:hover {
       border-color: var(--accent);
       transform: translateY(-5px);
     }
-    .portfolio-card img {
+    .-card img {
       width: 100%;
       aspect-ratio: 16/9;
       object-fit: cover;
     }
-    .portfolio-content {
+    .-content {
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
-    .portfolio-content h3 {
+    .-content h3 {
       margin-bottom: 0.5rem;
       font-size: 1.2rem;
       color: var(--accent);
     }
-    .portfolio-content p,
-    .portfolio-content ul {
+    .-content p,
+    .-content ul {
       color: var(--light-text);
       flex-grow: 1;
       font-size: 0.98rem;
     }
-    .portfolio-content ul {
+    .-content ul {
       margin: 0.65rem 0 1.5rem 1.1rem;
       padding: 0;
     }
-    .portfolio-links {
+    .-links {
       margin-top: auto;
       display: flex;
       gap: 1.25rem;
     }
-    .portfolio-links a {
+    .-links a {
       color: var(--light-text);
       text-decoration: none;
       transition: color 0.2s, transform 0.2s;
     }
-    .portfolio-links a:hover {
+    .-links a:hover {
       color: var(--accent);
       transform: scale(1.1);
     }
-    .portfolio-links svg {
+    .-links svg {
       width: 24px;
       height: 24px;
       fill: currentColor;
@@ -696,25 +696,25 @@ body::before {
 }
 
 /* ===== Square project tiles with overlay ===== */
-.portfolio-grid {
+.-grid {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.25rem;
 }
-.portfolio-card {
+.-card {
   position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   cursor: pointer;
   transition: border-color 0.2s, transform 0.2s;
 }
-.portfolio-card > img {
+.-card > img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.portfolio-card .portfolio-content {
+.-card .-content {
   position: absolute;
   inset: 0;
   display: flex;
@@ -730,14 +730,14 @@ body::before {
   color: var(--umd-white);
   transition: background 0.25s ease, transform 0.25s ease;
 }
-.portfolio-card .portfolio-content h3 {
+.-card .-content h3 {
   color: var(--umd-white);
   margin: 0 0 0.2rem 0;
   font-size: 1.05rem;
   line-height: 1.25;
 }
-.portfolio-card .portfolio-content p,
-.portfolio-card .portfolio-content ul {
+.-card .-content p,
+.-card .-content ul {
   margin: 0.25rem 0 0.75rem 0;
   color: var(--umd-light-gray);
   font-size: 0.9rem;
@@ -747,17 +747,17 @@ body::before {
   opacity: 0;
   transition: max-height 0.25s ease, opacity 0.25s ease;
 }
-.portfolio-card .portfolio-links {
+.-card .-links {
   margin-top: 0;
   gap: 0.9rem;
 }
-.portfolio-card:hover,
-.portfolio-card:focus-within {
+.-card:hover,
+.-card:focus-within {
   border-color: var(--accent);
   transform: translateY(-3px);
 }
-.portfolio-card:hover .portfolio-content,
-.portfolio-card:focus-within .portfolio-content {
+.-card:hover .-content,
+.-card:focus-within .-content {
   background: linear-gradient(
     to top,
     rgba(0,0,0,0.70) 28%,
@@ -765,24 +765,24 @@ body::before {
     rgba(0,0,0,0.10) 90%
   );
 }
-.portfolio-card:hover .portfolio-content p,
-.portfolio-card:hover .portfolio-content ul,
-.portfolio-card:focus-within .portfolio-content p,
-.portfolio-card:focus-within .portfolio-content ul {
+.-card:hover .-content p,
+.-card:hover .-content ul,
+.-card:focus-within .-content p,
+.-card:focus-within .-content ul {
   max-height: 8rem;
   opacity: 1;
 }
-.portfolio-card img {
+.-card img {
   aspect-ratio: auto !important;
 }
-.portfolio-links a {
+.-links a {
   color: var(--umd-light-gray);
 }
-.portfolio-links a:hover {
+.-links a:hover {
   color: var(--accent-secondary);
 }
 @media (hover: none) {
-  .portfolio-card .portfolio-content p,
+  .-card .-content p,
   .portfolio-card .portfolio-content ul {
     max-height: 6rem;
     opacity: 1;
@@ -1157,7 +1157,6 @@ body::before {
       <div class="portfolio-card" data-category="data-eng">
         <img src="blood_glucose_monitor.png" alt="Diabetes Data Monitoring" loading="lazy" width="1280" height="720" />
         <div class="portfolio-content">
-          <h3>Diabetes Data Warehouse Report</h3>
           <p>Designed and implemented a research-ready SQL data warehouse with over 70K+ patient records and a focus on DEI and privacy.</p>
           <div class="portfolio-links">
             <a href="https://docs.google.com/document/d/1QBsg9b6iYg75UVbAEZNcIoZw9iWH9GyGdgjn27ZhO78/edit?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="View Project Document" title="View Project Document">
