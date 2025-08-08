@@ -671,6 +671,123 @@
         transform: none !important;
       }
     }
+    /* ===== Animated background (subtle moving UMD-themed glow) ===== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 35% at 20% 15%, rgba(226,24,51,0.22), transparent 60%),
+    radial-gradient(35% 30% at 80% 20%, rgba(255,213,32,0.20), transparent 60%),
+    radial-gradient(50% 45% at 30% 85%, rgba(226,24,51,0.18), transparent 70%),
+    radial-gradient(45% 40% at 85% 75%, rgba(255,213,32,0.16), transparent 70%);
+  filter: blur(40px);
+  background-size: 200% 200%;
+  animation: umdGlowMove 28s ease-in-out infinite alternate;
+}
+@keyframes umdGlowMove {
+  0%   { transform: translate3d(0,0,0);     background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%; }
+  100% { transform: translate3d(0,0,0);     background-position: 100% 100%, 0% 100%, 100% 0%, 0% 0%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none !important; }
+}
+
+/* ===== Square project tiles with overlay ===== */
+.portfolio-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+.portfolio-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.portfolio-card > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.portfolio-card .portfolio-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.55) 22%,
+    rgba(0,0,0,0.30) 55%,
+    rgba(0,0,0,0.00) 85%
+  );
+  color: var(--umd-white);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.portfolio-card .portfolio-content h3 {
+  color: var(--umd-white);
+  margin: 0 0 0.2rem 0;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+.portfolio-card .portfolio-content p,
+.portfolio-card .portfolio-content ul {
+  margin: 0.25rem 0 0.75rem 0;
+  color: var(--umd-light-gray);
+  font-size: 0.9rem;
+  line-height: 1.35;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.25s ease, opacity 0.25s ease;
+}
+.portfolio-card .portfolio-links {
+  margin-top: 0;
+  gap: 0.9rem;
+}
+.portfolio-card:hover,
+.portfolio-card:focus-within {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+.portfolio-card:hover .portfolio-content,
+.portfolio-card:focus-within .portfolio-content {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.70) 28%,
+    rgba(0,0,0,0.42) 60%,
+    rgba(0,0,0,0.10) 90%
+  );
+}
+.portfolio-card:hover .portfolio-content p,
+.portfolio-card:hover .portfolio-content ul,
+.portfolio-card:focus-within .portfolio-content p,
+.portfolio-card:focus-within .portfolio-content ul {
+  max-height: 8rem;
+  opacity: 1;
+}
+.portfolio-card img {
+  aspect-ratio: auto !important;
+}
+.portfolio-links a {
+  color: var(--umd-light-gray);
+}
+.portfolio-links a:hover {
+  color: var(--accent-secondary);
+}
+@media (hover: none) {
+  .portfolio-card .portfolio-content p,
+  .portfolio-card .portfolio-content ul {
+    max-height: 6rem;
+    opacity: 1;
+  }
+}
   </style>
 
   <!-- JSON-LD Person Schema -->
